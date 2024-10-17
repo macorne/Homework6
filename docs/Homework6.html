@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Matthew Corne">
+<meta name="dcterms.date" content="2024-10-16">
+
+<title>Homework 6</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Homework 6</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Matthew Corne </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 16, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="task-1-conceptual-questions" class="level2">
+<h2 class="anchored" data-anchor-id="task-1-conceptual-questions">Task 1: Conceptual Questions</h2>
+<ol type="1">
+<li>What is the purpose of the lapply() function? What is the equivalent purrr function?</li>
+</ol>
+<blockquote class="blockquote">
+<p><code>lapply()</code> (list apply) returns a list of values obtained by applying a function to margins of an array or matrix. The equivalent <code>purrr</code> function is <code>map()</code>.</p>
+</blockquote>
+<ol start="2" type="1">
+<li>Suppose we have a list called my_list. Each element of the list is a numeric data frame (all columns are numeric). We want use lapply() to run the code cor(numeric_matrix, method = “kendall”) on each element of the list. Write code to do this below! (I’m really trying to ask you how you specify method = “kendall” when calling lapply().)</li>
+</ol>
+<blockquote class="blockquote">
+<p>lapply(my_list,cor(my_list,(x) cor(x,method=“kendall”)))</p>
+</blockquote>
+<ol start="3" type="1">
+<li>What are two advantages of using purrr functions instead of the BaseR apply family?</li>
+</ol>
+<blockquote class="blockquote">
+<p>More consistency - the <code>purrr</code> functions are used for clarity compared with <code>apply()</code> - and some helper functions</p>
+</blockquote>
+<ol start="4" type="1">
+<li>What is a side-effect function?</li>
+</ol>
+<blockquote class="blockquote">
+<p>A side-effect function changes variables in the environment and does not return the modified argument (data frame).</p>
+</blockquote>
+<ol start="5" type="1">
+<li>Why can you name a variable sd in a function and not cause any issues with the sd function?</li>
+</ol>
+<blockquote class="blockquote">
+<p>The inside of a function creates a local function environment that does not extend beyond the action of the function. That is, the function opens its environment, executes, then closes its environment.</p>
+</blockquote>
+</section>
+<section id="task-2-writing-r-functions" class="level2">
+<h2 class="anchored" data-anchor-id="task-2-writing-r-functions">Task 2: Writing R Functions</h2>
+<ol type="1">
+<li>Write a basic function (call it getRMSE()) that takes in a vector of responses and a vector of predictions and outputs the RMSE. Then, add additional arguments <code>...</code> to allow for handling NA values that may occur in the vector of responses.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>getRMSE <span class="ot">&lt;-</span> <span class="cf">function</span>(vres,vprd,...){</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  rmse <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(<span class="fu">sum</span>((vres<span class="sc">-</span>vprd)<span class="sc">^</span><span class="dv">2</span>,...))) <span class="co">#Handle the NAs inside of sum, not mean; otherwise, will get NA</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(rmse)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Run the following code to create some response values and predictions.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(n)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>resp <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">10</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="fu">lm</span>(resp <span class="sc">~</span> x), <span class="fu">data.frame</span>(x))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>resp[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>resp[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">getRMSE</span>(resp,pred,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9.564594</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Write a function called getMAE() that follows the specifications of the getRMSE() function.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>getMAE <span class="ot">&lt;-</span> <span class="cf">function</span>(vres,vprd,...){</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  vres[is.na(vres)] &lt;- 0</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  mae <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">/</span><span class="fu">length</span>(vres))<span class="sc">*</span><span class="fu">sum</span>(<span class="fu">abs</span>(vres<span class="sc">-</span>vprd),...) <span class="co">#Again, pass the additional arguments to sum; abs only takes 1 argument</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(mae)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>Run the following code to create some response values and predictions.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(n)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>resp <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">10</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="fu">lm</span>(resp <span class="sc">~</span> x), <span class="fu">data.frame</span>(x))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Test your MAE function using this data.</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">getMAE</span>(resp,pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8155776</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat after replacing two of the response values with missing values (NA_real_). Test your MAE function with and without specifying the behavior to deal with missing values</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>resp[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>resp[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">getMAE</span>(resp,pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getMAE</span>(resp,pred,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8076377</code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Write a wrapper function containing getRMSE() and getMAE() as helper functions.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#The function should check that two numeric (atomic) vectors have been passed (consider is.vector(), is.atomic(), and is.numeric()). If not, a message should print and the function should exit. The function should return both metrics by default and include names. The behavior should be able to be changed using a character string of metrics to find.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>getWRAP <span class="ot">&lt;-</span> <span class="cf">function</span>(vres,vprd,<span class="at">getRMSE=</span><span class="cn">TRUE</span>,<span class="at">getMAE=</span><span class="cn">TRUE</span>,...) {</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.atomic</span>(<span class="fu">is.vector</span>(<span class="fu">is.numeric</span>(vres)))<span class="sc">==</span><span class="cn">FALSE</span> <span class="sc">|</span> <span class="fu">is.atomic</span>(<span class="fu">is.vector</span>(<span class="fu">is.numeric</span>(vprd)))<span class="sc">==</span><span class="cn">FALSE</span>){</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(<span class="st">"Response and prediction must be numeric (atomic) vectors"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> {</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>      lst <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (getRMSE){</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        rmse <span class="ot">&lt;-</span> <span class="fu">getRMSE</span>(vres,vprd,...)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        lst[[<span class="fu">length</span>(lst)<span class="sc">+</span><span class="dv">1</span>]] <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"RMSE ="</span>, rmse, <span class="at">sep =</span> <span class="st">" "</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (getMAE) {</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        mae <span class="ot">&lt;-</span> <span class="fu">getMAE</span>(vres,vprd,...)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        lst[[<span class="fu">length</span>(lst)<span class="sc">+</span><span class="dv">1</span>]] <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"MAE ="</span>, mae, <span class="at">sep =</span> <span class="st">" "</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(lst)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(n)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>resp <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">10</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="fu">lm</span>(resp <span class="sc">~</span> x), <span class="fu">data.frame</span>(x))</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Test your new function using this data. Call it once asking for each metric individually and once specifying both metrics</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">getWRAP</span>(resp,pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "RMSE = 9.58167655151933"
+
+[[2]]
+[1] "MAE = 0.815577593682669"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getWRAP</span>(resp,pred,<span class="at">getRMSE=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "MAE = 0.815577593682669"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getWRAP</span>(resp,pred,<span class="at">getMAE=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "RMSE = 9.58167655151933"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat with replacing two of the response values with missing values (NA_real_).</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>resp[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>resp[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">getWRAP</span>(resp,pred,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "RMSE = 9.56459439467091"
+
+[[2]]
+[1] "MAE = 0.807637655526275"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getWRAP</span>(resp,pred,<span class="at">getRMSE=</span><span class="cn">FALSE</span>,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "MAE = 0.807637655526275"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getWRAP</span>(resp,pred,<span class="at">getMAE=</span><span class="cn">FALSE</span>,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "RMSE = 9.56459439467091"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, test your function by passing it incorrect data (i.e. a data frame or something else instead of vectors)</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#getWRAP(list("hungry","Hungry","HIPPOS!"),list(1,"x",TRUE))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="task-3-querying-an-api-and-a-tidy-style-function" class="level2">
+<h2 class="anchored" data-anchor-id="task-3-querying-an-api-and-a-tidy-style-function">Task 3: Querying an API and a Tidy-Style Function</h2>
+<ol type="1">
+<li>Use GET() from the httr package to return information about a topic that you are interested in that has been in the news lately (store the result as an R object). Note: We can only look 30 days into the past with a free account.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="ot">&lt;-</span> <span class="st">"b237d7ce5b9d44679649057226cdb326"</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>URL <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"https://newsapi.org/v2/everything?q=NASA&amp;from=2024-10-01&amp;sortBy=popularity&amp;apiKey="</span>,API_KEY,<span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>id_info <span class="ot">&lt;-</span> httr<span class="sc">::</span><span class="fu">GET</span>(URL)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(id_info, <span class="at">max.level =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 10
+ $ url        : chr "https://newsapi.org/v2/everything?q=NASA&amp;from=2024-10-01&amp;sortBy=popularity&amp;apiKey=b237d7ce5b9d44679649057226cdb326"
+ $ status_code: int 200
+ $ headers    :List of 12
+  ..- attr(*, "class")= chr [1:2] "insensitive" "list"
+ $ all_headers:List of 1
+ $ cookies    :'data.frame':    0 obs. of  7 variables:
+ $ content    : raw [1:82365] 7b 22 73 74 ...
+ $ date       : POSIXct[1:1], format: "2024-10-17 01:10:22"
+ $ times      : Named num [1:6] 0 0.167 0.193 0.23 0.503 ...
+  ..- attr(*, "names")= chr [1:6] "redirect" "namelookup" "connect" "pretransfer" ...
+ $ request    :List of 7
+  ..- attr(*, "class")= chr "request"
+ $ handle     :Class 'curl_handle' &lt;externalptr&gt; 
+ - attr(*, "class")= chr "response"</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Parse what is returned and find your way to the data frame that has the actual article information in it (check content). Use the pluck() function from purrr to grab the articles element. Note the first column should be a list column!</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'jsonlite'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    flatten</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>parsed <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(id_info<span class="sc">$</span>content))</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>parsed <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="st">"articles"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           source.id          source.name
+1               &lt;NA&gt;  Yahoo Entertainment
+2               &lt;NA&gt;  Yahoo Entertainment
+3               &lt;NA&gt;            [Removed]
+4               &lt;NA&gt;  Yahoo Entertainment
+5               &lt;NA&gt;            [Removed]
+6              wired                Wired
+7              wired                Wired
+8              wired                Wired
+9               &lt;NA&gt;          Gizmodo.com
+10              &lt;NA&gt;          Gizmodo.com
+11              &lt;NA&gt;          Gizmodo.com
+12              &lt;NA&gt;          Gizmodo.com
+13              &lt;NA&gt;          Gizmodo.com
+14              &lt;NA&gt;          Gizmodo.com
+15              &lt;NA&gt;          Gizmodo.com
+16              &lt;NA&gt;          Gizmodo.com
+17              &lt;NA&gt;          Gizmodo.com
+18              &lt;NA&gt;          Gizmodo.com
+19              &lt;NA&gt;          Gizmodo.com
+20              &lt;NA&gt;          Gizmodo.com
+21              &lt;NA&gt;          Gizmodo.com
+22              &lt;NA&gt;          Gizmodo.com
+23              &lt;NA&gt;          Gizmodo.com
+24              &lt;NA&gt;          Gizmodo.com
+25              &lt;NA&gt;          Gizmodo.com
+26              &lt;NA&gt;          Gizmodo.com
+27              &lt;NA&gt;          Gizmodo.com
+28              &lt;NA&gt;          Gizmodo.com
+29              &lt;NA&gt;          Gizmodo.com
+30              &lt;NA&gt;             BBC News
+31              &lt;NA&gt;             BBC News
+32              &lt;NA&gt;             BBC News
+33              &lt;NA&gt;             BBC News
+34              &lt;NA&gt;                 CNET
+35              &lt;NA&gt;                 CNET
+36              &lt;NA&gt;                 CNET
+37              &lt;NA&gt;                 CNET
+38              &lt;NA&gt;                 CNET
+39              &lt;NA&gt;                 CNET
+40              &lt;NA&gt;                  NPR
+41              &lt;NA&gt;                  NPR
+42              &lt;NA&gt;                  NPR
+43  business-insider     Business Insider
+44  business-insider     Business Insider
+45  business-insider     Business Insider
+46  business-insider     Business Insider
+47  business-insider     Business Insider
+48  business-insider     Business Insider
+49              &lt;NA&gt;         Hipertextual
+50              &lt;NA&gt;         Hipertextual
+51              &lt;NA&gt;         Hipertextual
+52              &lt;NA&gt;         Hipertextual
+53              &lt;NA&gt;             Hackaday
+54              &lt;NA&gt;             Hackaday
+55              &lt;NA&gt;             Hackaday
+56              &lt;NA&gt;             Hackaday
+57              &lt;NA&gt;             Hackaday
+58              &lt;NA&gt;             Hackaday
+59              &lt;NA&gt; Digital Camera World
+60              &lt;NA&gt;  Yahoo Entertainment
+61              &lt;NA&gt;  Yahoo Entertainment
+62              &lt;NA&gt;           Tennessean
+63              &lt;NA&gt; Akron Beacon Journal
+64              &lt;NA&gt;      Courier Journal
+65              &lt;NA&gt;          Robb Report
+66              time                 Time
+67              time                 Time
+68              &lt;NA&gt;           Xataka.com
+69              &lt;NA&gt;           Xataka.com
+70              &lt;NA&gt;           Xataka.com
+71              &lt;NA&gt;           Xataka.com
+72              &lt;NA&gt;           Xataka.com
+73              &lt;NA&gt;           Xataka.com
+74              &lt;NA&gt;           Xataka.com
+75              &lt;NA&gt;           Xataka.com
+76              &lt;NA&gt;           Xataka.com
+77              &lt;NA&gt;           Xataka.com
+78              &lt;NA&gt;           Xataka.com
+79              &lt;NA&gt;           Xataka.com
+80              &lt;NA&gt;           Xataka.com
+81              &lt;NA&gt;           Xataka.com
+82              &lt;NA&gt;           Xataka.com
+83              &lt;NA&gt;           Xataka.com
+84              &lt;NA&gt;           Xataka.com
+85              &lt;NA&gt;           Xataka.com
+86              &lt;NA&gt;           Xataka.com
+87              &lt;NA&gt;           Xataka.com
+88              &lt;NA&gt;           Xataka.com
+89              &lt;NA&gt;           Xataka.com
+90              &lt;NA&gt;           Xataka.com
+91          abc-news             ABC News
+92              &lt;NA&gt;       The New Yorker
+93              &lt;NA&gt;       Digital Trends
+94              &lt;NA&gt;       Digital Trends
+95              &lt;NA&gt;       Digital Trends
+96              &lt;NA&gt;       Digital Trends
+97              &lt;NA&gt;       Digital Trends
+98              &lt;NA&gt;       Digital Trends
+99              &lt;NA&gt;       Digital Trends
+100             &lt;NA&gt;       Digital Trends
+                                                                    author
+1                                                            Mariella Moon
+2                                                            Mariella Moon
+3                                                                     &lt;NA&gt;
+4                                                            Mariella Moon
+5                                                                     &lt;NA&gt;
+6                                                     Jonathan O’Callaghan
+7                                                            Amy Francombe
+8                                                           Issie Lapowsky
+9                                                            Isaac Schultz
+10                                                           Isaac Schultz
+11                                                           Passant Rabie
+12                                                           Passant Rabie
+13                                                           Passant Rabie
+14                                                           Passant Rabie
+15                                                           Passant Rabie
+16                                                           Passant Rabie
+17                                                           Passant Rabie
+18                                                              Adam Kovac
+19                                                           Passant Rabie
+20                                                           Isaac Schultz
+21                                                              Adam Kovac
+22                                                           Isaac Schultz
+23                                                             Tom Maxwell
+24                                                           Passant Rabie
+25                                                           Passant Rabie
+26                                                              Adam Kovac
+27                                                           Passant Rabie
+28                                                           Isaac Schultz
+29                                                               Kyle Barr
+30                                                                    &lt;NA&gt;
+31                                                                    &lt;NA&gt;
+32                                                                    &lt;NA&gt;
+33                                                                    &lt;NA&gt;
+34                                                               Joe Hindy
+35                                                           Amanda Kooser
+36                                                           Amanda Kooser
+37                                                               Joe Hindy
+38                                                               Joe Hindy
+39                                                               Joe Hindy
+40                                                           Bill Chappell
+41                                                        Chandelis Duster
+42                                                         Brittney Melton
+43                                                         Dan DeFrancesco
+44  Lauren Edmonds,Katie Balevic,Katherine Tangalakis-Lippert,Taylor Rains
+45                                                           Jenny McGrath
+46                                                         Darius Rafieyan
+47                                                            Taylor Rains
+48                                                              Gabbi Shaw
+49                                                          Azucena Martín
+50                                                          Azucena Martín
+51                                                        The Conversation
+52                                                          Azucena Martín
+53                                                              Maya Posch
+54                                                              Maya Posch
+55                                                              Maya Posch
+56                                                               Tom Nardi
+57                                                             Dan Maloney
+58                                                               Lewin Day
+59                                                             Leonie Helm
+60                                                                   Space
+61                                                   Marta Di Donfrancesco
+62                                        Joyce Orlando, USA TODAY NETWORK
+63                  Mariyam Muhammad and Chad Murphy, Akron Beacon Journal
+64     Ana Rocío Álvarez Bríñez and John Tufts, Louisville Courier Journal
+65                                                             Daniel Cote
+66                                                            Simmone Shah
+67                                                        MARCIA DUNN / AP
+68                                                            Miguel Jorge
+69                                                         Matías S. Zavia
+70                                                       Juan Carlos López
+71                                                         Matías S. Zavia
+72                                                         Matías S. Zavia
+73                                                         Matías S. Zavia
+74                                                         Matías S. Zavia
+75                                                   Pablo Martínez-Juarez
+76                                                       Alejandro Alcolea
+77                                                            Miguel Jorge
+78                                                            Miguel Jorge
+79                                                         Matías S. Zavia
+80                                                         Matías S. Zavia
+81                                                       Alejandro Alcolea
+82                                                            Miguel Jorge
+83                                                            Miguel Jorge
+84                                                            Miguel Jorge
+85                                                         Matías S. Zavia
+86                                                   Pablo Martínez-Juarez
+87                                                         Matías S. Zavia
+88                                                   Pablo Martínez-Juarez
+89                                                          Javier Jiménez
+90                                                         Matías S. Zavia
+91                                                                ABC News
+92                                                          David W. Brown
+93                                                         Georgina Torbet
+94                                                             Trevor Mogg
+95                                                             Trevor Mogg
+96                                                             Trevor Mogg
+97                                                             Trevor Mogg
+98                                                             Trevor Mogg
+99                                                         Georgina Torbet
+100                                                        Georgina Torbet
+                                                                                                                             title
+1                                                                       SpaceX Crew-8 astronauts are leaving the ISS on October 13
+2                                                      This dazzling NASA image shows the biggest super star cluster in our galaxy
+3                                                                                                                        [Removed]
+4                                                   NASA's latest supernova image could tell us how fast the universe is expanding
+5                                                                                                                        [Removed]
+6                                                                           The Hunt for Life on Europa Is About to Kick Up a Gear
+7                                            Coperni’s Spray-On Dress Was a Viral Smash. This Gravity-Defying Gel Bag Might Top It
+8                                                                                       The American Who Waged a Tech War on China
+9                                                   Hurricane Milton’s Imminent Landfall Officially Delays NASA Mission to Jupiter
+10                                                             One of These Two Space Observatories Could Be NASA’s Next Big Thing
+11                                                      SpaceX’s Dragon Capsule Can Now Land Like a Rocket in Case of an Emergency
+12                                                Growing Air Leak in Russian Segment Now Deemed Greatest ISS Risk, Report Reveals
+13                                                            Can Rocket Lab Save NASA’s Mission to Bring Pieces of Mars to Earth?
+14                                                       The Day NASA Smashed an Asteroid: What It Was Like Inside Mission Control
+15                                                  NASA Forced to Turn Off Voyager 2 Instrument Due to Spacecraft’s Loss of Power
+16                                                             Here’s What the Space Station That Could Replace the ISS Looks Like
+17                                               NASA Punched an Asteroid in 2022. Another Probe Is Now on Its Way to the Wreckage
+18                                                             Curiosity Rover Finds Clues to How Mars Became a Lifeless Wasteland
+19                                                                              The Latest ‘Face’ on Mars Is the Most Dramatic Yet
+20                                                                Satellite Images Reveal Hurricane Helene’s Devastating Aftermath
+21                                                                                     Three-Star System Shatters Astronomy Record
+22                                            The Great Cosmic Atlas Begins: Euclid’s 208-Gigapixel Image Maps 14 Million Galaxies
+23                                                  SpaceX Reportedly Strong-Arms Spectrum From Rivals Who Want a Ride on a Rocket
+24                                                     Jupiter’s Great Red Spot Is Shapeshifting in Ways ‘Never Identified Before’
+25                                        Secretive Space Force Vehicle Will Conduct ‘Groundbreaking’ Maneuver to Adjust Its Orbit
+26                                                                              Tuesday’s Solar Eclipse Might Be the Worst One Yet
+27                                                FAA Launches Investigation Into Falcon 9’s Missed Splashdown After Crew-9 Launch
+28                                                             Spy Plane Uncovers Radioactive Gamma Rays in Tropical Thunderstorms
+29                                                                 Alienware Pro Wireless Headset Review: Old School Sound Cannons
+30                                                     'Comet of the century' might be visible in UK skies - here's how to spot it
+31                                                                             Joy for photographer who saw 'comet of the century'
+32                                                                  'Human race needs to expand beyond Earth,' says Prof Brian Cox
+33                                                                       Countdown to mission hunting alien life on a distant moon
+34                                                  NASA Is Creating a Time Zone for the Moon. In Space, Every Microsecond Matters
+35                                           'Comet of the Century' May Dazzle Earth in October. This Astronaut Already Has Photos
+36                                                               Watch for the Northern Lights to Put on a Dazzling Show This Week
+37                                                                 Scientists Find More Black Holes, Solving Early Universe Puzzle
+38                                                Earth's Mini-Moon: Everything You Need to Know About Our Temporary Second 'Moon'
+39                                                                       What You Need to Know About Earth's Temporary Second Moon
+40                                                      The scale of Helene’s devastating impacts are eye-popping, even from space
+41                                                                Rare comet to streak across night sky. Here’s how you can see it
+42                                                    Fact-checking lies about FEMA funding. And, turn climate anxiety into action
+43                                                                          Space travel comes with big dreams and bigger business
+44                                                                             Boeing's terrible, horrible, no good, very bad year
+45                  The year's biggest, brightest supermoon rises this week. Here's the best time to see it at its most brilliant.
+46                     Anthropic's power players: Here are the 11 leaders helping shape the future of the Amazon-backed AI company
+47                   I toured an electric 'air taxi' that plans to launch in New York and Los Angeles as soon as 2025. See inside.
+48                                                           The terrifying true stories that inspired your favorite horror movies
+49                              La Estación Espacial Internacional, en peligro: una fuga podría llevar a su destrucción anticipada
+50                                                     Todo sobre HERA: la misión espacial europea para protegernos del Armageddon
+51                                                         Por qué Elon Musk usa acero inoxidable para sus nuevas naves&nbsp;espaciales
+52                                                   El gran mito de SpaceX: no fueron los primeros en crear cohetes reutilizables
+53                                                                           Lagrange Points and Why You Want to Get Stuck At Them
+54                                                              Voyager 2’s Plasma Spectrometer Turned Off in Power-Saving Measure
+55                                                    Cockroaches in Space: Waste Processing and a Healthy Protein Source Combined
+56                                                                             Polaris Dawn, and the Prudence of a Short Spacewalk
+57                                                                                                 Hackaday Links: October 6, 2024
+58                                                               Supercon 2023: Receiving Microwave Signals from Deep-Space Probes
+59                              34-year-old Hubble Telescope does it again - NASA uncovers unusual galaxy using Hubble photography
+60                                                                                           Astronomical Explosion 4K Hubble View
+61                                                              Italy's Spacewear to develop training clothing for Virgin Galactic
+62                                                Not just a hunter's moon. October's full moon is also a supermoon. When to watch
+63                                   Northern lights could be visible tonight in Ohio, northern US. How to watch, what to look for
+64                                                          Were you able to see the northern lights in Kentucky? These people did
+65                                                           SpaceX Just Successfully Caught Its Starship Booster on Its Launchpad
+66                                        You Won’t Want to Miss October’s Rare Comet Sighting. Here’s How and When You Can See It
+67                                        SpaceX Launches Its Mega Starship Rocket. This Time, Mechanical Arms Catch It at Landing
+68                  La ISS tiene un serio problema, y está en el módulo ruso. Unas grietas han hecho saltar las alarmas en la NASA
+69           Tras 20 años de espera, la NASA ha lanzado una de las naves más grandes de la historia. Su fin: buscar vida en Europa
+70                Con cohetes nucleares es posible llegar a Marte en la mitad de tiempo. El problema es el diseño de los reactores
+71           La NASA desvió un asteroide estrellando una nave espacial. Ahora la ESA ha enviado a Hera para ver qué pasó realmente
+72                        El sol está entrando en su máximo y es más intenso de lo esperado. El pronóstico: auroras impresionantes
+73                         Un nuevo fallo del cohete Falcon 9 ha paralizado los lanzamientos de SpaceX. En el peor momento posible
+74  La última bala de Boeing en el sector espacial: si el cohete Vulcan es un éxito, tendrá una oportunidad de competir con SpaceX
+75                               Nunca habíamos visto tres huracanes a la vez en el Atlántico en pleno mes de octubre. Hasta ahora
+76                       Las imágenes satelitales de la Antártida revelan algo inquietante: ha empezado a ser más verde que blanca
+77    La primera estación espacial comercial para millonarios parece sacada de '2001' de Kubrick. Solo le falta una IA que "hable"
+78            El huracán Milton dejó sin agua potable parte de Florida. Y entonces llegó una máquina para recolectar agua del aire
+79         El supervolcán más temido del mundo se está moviendo. Hay quien propone perforarlo ahora para extraer energía ilimitada
+80                               El Sol acaba de dispararnos su llamarada más potente de esta década. El máximo solar está al caer
+81                          Los diez "unicornios" más valiosos de 2024, ilustrados en un revelador gráfico sobre la industria tech
+82  Hemos encontrado algo sorprendente en la estrella más cercana al Sol: un mundo diminuto donde un año dura tres días terrestres
+83           A tan solo 15 metros bajo tierra en una roca se escondía algo fascinante: una forma de vida de 2.000 millones de años
+84                     Un avión espía de EEUU se adentró en una tormenta tropical. Ha dado con algo sorprendente: son radioactivas
+85                         SpaceX ha hecho público lo que cuesta el desarrollo de Starship. La clave es de dónde saca tanto dinero
+86        El James Webb acaba de descubrir agua oxigenada en el sitio más insospechado que se nos podía ocurrir: la luna de Plutón
+87        Elon Musk dice que toda la energía del mundo provendrá de paneles solares cuando la gente entienda la "escala Kardashev"
+88     Llevamos 50 años con la sospecha de que la materia oscura está formada de agujeros negros. Tenemos una forma de demostrarlo
+89     Tras siglos buscando un tratamiento para la disfunción eréctil, este médico tuvo una idea: transplantar testículos de cabra
+90         Un panel solar lleva siete años orbitando la Tierra. Ahora sabemos que los parques fotovoltaicos espaciales son viables
+91                                                                WATCH: Timelapse video shows Hurricane Milton as seen from space
+92                                                            The Woman Who Helped Send a Spacecraft to Europa, Jupiter’s Icy Moon
+93                                                                                NASA can talk to its spacecraft using lasers now
+94                                                                                      Watch how astronauts drink coffee in space
+95                                                                  NASA’s skywatching tips for October include a comet and Europa
+96                                                          An ace photographer is about to leave the ISS. Here are his best shots
+97                                                         NASA scrubs Thursday’s launch of Europa Clipper mission to Jupiter moon
+98                                                                          How to watch Crew-8 depart the space station on Sunday
+99                                                                        How to watch the Europa Clipper mission launch on Monday
+100                                                                    NASA’s Crew-8 astronauts will stay in orbit a little longer
+                                                                                                                                                                                                                                                               description
+1     NASA and SpaceX are looking to undock the Crew-8 mission vehicle from the ISS on October 13, 3:05AM Eastern time. Crew-8's astronauts were originally scheduled to start making their way back to Earth on October 7, but since their spacecraft is going to splash…
+2     The James Webb Space Telescope continues to capture images of space that are clearer and more detailed than what we've seen before. One of the latest images it has taken is of a "super star cluster" called Westerlund 1, and it shows an abundant collection of …
+3                                                                                                                                                                                                                                                                [Removed]
+4     The James Webb Space Telescope's Near-Infrared Camera (NIRCam) captured a curious sight in a region 3.6 billion light-years away from Earth: A supernova that appears three times, at three different periods during its explosion, in one image. More importantly,…
+5                                                                                                                                                                                                                                                                [Removed]
+6                                                                                                                                                      NASA’s Europa Clipper mission is set for launch, finally revealing if this icy moon of Jupiter is habitable or not.
+7                                                                                                                                   The sci-fi-loving fashion house has partnered with Disney to make an eco-friendly bag that could signal a shift in 3D-printed apparel.
+8                                                                                                                                                   China is racing to unseat the United States as the world’s technological superpower. Not if Jake Sullivan can help it.
+9                                                                                                                                                                                         The Europa Clipper was set to launch Thursday but Mother Nature had other plans.
+10                                                                                                                                               NASA selected two space observatory proposals for additional review, and one is expected to be cleared for a 2032 launch.
+11                                                                                                                                          The crew capsule was always designed to land propulsively, but NASA felt more comfortable using parachutes for its astronauts.
+12                                                                                                                                       NASA and Roscosmos have elevated the air leak to the highest level of risk, but they can't agree on when it becomes unmanageable.
+13                                                                                                                      NASA is in desperate need of an alternative plan for its Mars Sample Return, and is hoping the private industry can salvage its ambitious mission.
+14                                                                                                                                                            The author of a new book on the DART mission takes us behind the scenes of the day NASA smacked an asteroid.
+15                                                                                                                                                                           The interstellar probe has just enough power to continue exploring the cosmos into the 2030s.
+16                                                                                                                                                          The proposed commercial space station includes familiar features like a cupola window and a large robotic arm.
+17                                                                                                                            A follow-up mission to DART, Hera will travel to a binary asteroid to observe the aftermath of NASA's wildly successful kinetic impact test.
+18                                                                                             Mars is generally regarded as a place that can't support life, but new research sheds light on how the Red Planet evolved into the barren, inhospitable world we see today.
+19                                                                                                                                                                                                    We've seen faces on Mars before, but this one is the most relatable.
+20                                                                                                                                                                        Images from space show vast swaths of the American southeast without power days after the storm.
+21                                                                                                             The newly identified three-body system has a problem, and it’s not aliens—it’s that in about 20 million years, the stars are expected to merge and explode.
+22                                                                                                                         260 observations showcase data from ESA's dark matter telescope, which will eventually be used to create the largest-ever 3D map of the cosmos.
+23                                                                                                                                               SpaceX operates flights to space as well as a satellite internet division with multiple rivals who rely on those flights.
+24                                                                                                                                                                                                The famous red eye of the storm squeezes in and out for reasons unknown.
+25                                                                                                                                                      Following a series of new maneuvers, the spaceplane will wrap up its seventh mission after nearly a year in space.
+26                                                                                                                                                  The upcoming annular eclipse will block out only a small portion of the Sun, and almost no one will be able to see it.
+27                                                                                                                                                After successfully launching a crew to the ISS, the rocket's upper stage experienced an anomaly during its deorbit burn.
+28                                                                                                                                   Storms in the tropics were seen emitting medium-duration gamma rays, shaking up conventional knowledge about how lightning manifests.
+29                                                                                                                                  Alienware’s next best attempt at a gaming headset goes back to basics. It has solid audio, but it may be looking too much to the past.
+30                                                                                                                                                                           Comet A3 (Tsuchinshan-ATLAS) could be spotted with the naked eye in the UK on Saturday night.
+31                                                                                                                                                                       Joanna, from the Black Country, captured Comet A3 hurtling through the Staffordshire night skies.
+32                                                                                                                                                                  The UK’s best-known particle physicist on whether he would be keen on an out of this world experience.
+33                                                                                                                                                                                             Nasa's spacecraft could change what we know about life in our solar system.
+34                                                                                                                                                                     It'll be called Coordinated Lunar Time. But first, the space agency has to figure out how to do it.
+35                                                                                                                 Comet Tsuchinshan-ATLAS will round Earth mid-month, but an astronaut on the International Space Station captured amazing photos of it circling the sun.
+36                                                                                                                   The sun kicked out a major flare, which means the aurora borealis could shine bright from Oct. 3-Oct. 5. Here's where and how to catch the spectacle.
+37                                                                                                                     Scientists identify faint black holes in galaxies that formed during the early days of the universe, using imagery from the Hubble Space Telescope.
+38                                                                                                                                                                                                         A small asteroid will orbit our planet for the next two months.
+39                                                                                                                                                      It may sound like something out of a sci-fi movie, but Earth's "mini-moon" is here to stay for a couple of months.
+40                                                                    Many of Helene’s effects are individual and heartbreaking, such as the deaths of children, grandparents and others. But the storm's impact is also so outsized that it’s clearly visible from space.
+41                                                                                 Your unusual chance to see a comet in the sky is here. C/2023 A3 Tsuchinshan-ATLAS was discovered by astronomers in 2023 — and will appear to the naked eye over the next couple weeks.
+42                                                                Former President Donald Trump has made several claims about FEMA's disaster response. NPR has fact-checked them ahead of Hurricane Milton. And, how you can turn climate anxiety into collective action.
+43                                                                                                                                                                                 NASA's Europa Clipper launched on Monday with the help of a SpaceX Falcon Heavy rocket.
+44                                                                                                                       Boeing has faced mechanical problems, safety problems, grounded planes, stranded astronauts, executive departures, a strike, and layoffs in 2024.
+45                                                                                                                          The biggest, brightest supermoon of 2024 will rise this week. Moonrise is the best time to see it at its most brilliant, according to experts.
+46                                                                                                                             Meet the leaders at Anthropic, who are driving safe AI innovations, and appealing to Fortune 500 companies amid OpenAI's internal disarray.
+47                                                                                                                  Joby wants to partner with airlines like Delta to connect airports and city centers in as little as seven minutes. Still, I'm skeptical about pricing.
+48                                                                                                                    Not all horror movies are total fiction — some take inspiration from real life. Here are the scariest true stories that horror movies were based on.
+49    Las fugas de aire no son una novedad en la Estación Espacial Internacional (EEI). Hace años que los astronautas en sus instalaciones y los ingenieros desde la Tierra han tenido que lidiar con ellas para evitar que sus tripulantes corran peligro. Hasta ahora s…
+50    Todas las agencias espaciales están muy interesadas en encontrar la forma de desviar asteroides que se acerquen peligrosamente a la Tierra. De momento no se ha detectado ninguno que ponga en peligro nuestro planeta. Pero cuando se detecte puede que no haya su…
+51    En una conversación&nbsp;grabada&nbsp;entre&nbsp;Adam Burrows, catedrático de Astrofísica en Princeton, y Elon Musk, el primero se sorprende del uso de acero inoxidable en la nave Starship de SpaceX. En lugar de usar materiales “más aerospaciales” como los compuestos de fib…
+52    SpaceX, la compañía espacial de Elon Musk, ha vuelto a hacer historia. Si ya había conseguido reutilizar la primera fase de su cohete Falcon 9 en hasta 20 ocasiones, ahora ha hecho algo aún más difícil con el quinto vuelo de prueba de Starship: recuperar el c…
+53                                                                              Orbital mechanics is a fun subject, as it involves a lot of seemingly empty space that’s nevertheless full of very real forces, all of which must be taken into account lest one’s spacec…
+54                                                                        The Voyager 2 spacecraft’s energy budget keeps dropping by about 4 Watt/year, as the plutonium in its nuclear power source is steadily dropping as the isotope decays. With 4 Watt of power les…
+55                                                                  As the current frontier of humanity in space, the International Space Station is heavily reliant on Earth not only for fresh supplies but also as a garbage disposal service for the various types of…
+56                                                                  For months before liftoff, the popular press had been hyping up the fact that the Polaris Dawn mission would include the first-ever private spacewalk. Not only would this be the first time anyone w…
+57                                                                  Remember that time a giant cylindrical aquarium in a Berlin hotel bar catastrophically failed and left thousands of fish homeless? We sure do, and further recall that at the time, we were very curi…
+58                                                               Here’s the thing about radio signals. There is wild and interesting stuff just getting beamed around all over the place. Phrased another way, there are beautiful signals everywhere for those …read more
+59                                                                                                                                                       A mysterious galaxy is revealed - "and thanks to Hubble, we have the ability to uncover their secrets," says NASA
+60                                                                                                             The Hubble Space Telescope has captured imagery of an object 9,000 light-years way known as IRAS 05506+2414. It "may be an example of an explosive event...
+61                                                                                                           Italy's Spacewear has closed a deal with Virgin Galactic to design and develop a clothing range for the training of its astronauts and space tourists, the...
+62                                                                                                                                                 October's full moon is almost here and it will be the last time to see a supermoon in 2024. Here's when you can see it.
+63                                                                                                                                                         The northern lights could be visible tonight. Will they be visible from Ohio? What to know and how to see them.
+64                                                                                                                                                                    Kentucky is outside the viewing line for auroras appearing Friday night, Oct. 11, according to NOAA.
+65                                                                                                                    The 233-foot-long booster was caught by giant "chop-stick" arms during landing. This technical breakthrough on a rocket eventually headed to Mars...
+66                                                                                                                                                                               A ”once in a lifetime” comet is expected to light up the night sky as it passes by Earth.
+67                                                                                                                                            SpaceX launched its enormous&nbsp;Starship rocket&nbsp;on Sunday, catching the returning booster back at the pad with mechanical arms.
+68    Lo que parecía hace unas semanas pequeños problemas de “mantenimiento” en la ISS, han pasado a otra categoría. A lo largo de los más de un cuarto de siglo que ya tienen muchos de los elementos de la estación han existido problemas y averías, también fugas, pe…
+69  Un poderoso cohete Falcon Heavy de SpaceX ha gastado hasta la última gota de combustible que tenía en su interior para lanzar Europa Clipper, una de las misiones más importantes de la NASA para la próxima década.\n&lt;!-- BREAK 1 --&gt;\nUna sonda enorme. Europa Clip…
+70    Marte. El planeta rojo es el próximo gran destino de la humanidad. Actualmente la NASA planea lanzar una misión tripulada a este mundo a lo largo de la próxima década, aunque aún no ha concretado una fecha. Y es comprensible que no lo haya hecho. La entidad d…
+71  La misión Hera de la Agencia Espacial Europea (ESA) vuela ya hacia Dimorphos, el primer asteroide desviado por el ser humano en una misión de defensa planetaria. Para lanzarla, SpaceX tuvo que volar más rápido que nunca.\n&lt;!-- BREAK 1 --&gt;\nComienza la misión He…
+72  El ciclo 25 del Sol se acerca a su punto de mayor actividad. Como estaba previsto, el máximo solar ha llegado con múltiples, potentes llamaradas y tormentas geomagnéticas. El pronóstico: auroras donde no solemos verlas.\n&lt;!-- BREAK 1 --&gt;\nSi bien la llamarada s…
+73  Los lanzamientos del cohete Falcon 9 vuelven a estar paralizados, en esta ocasión por un fallo de la segunda etapa al desorbitar. No deberían tardar en reanudarse: SpaceX tiene dos misiones importantes programadas para la semana que viene.\n&lt;!-- BREAK 1 --&gt;\nCo…
+74    United Launch Alliance (ULA) lanzará este viernes la segunda y última misión de certificación de su nuevo cohete Vulcan Centaur. Con precios similares a los que ofrece SpaceX a la NASA y el Pentágono, el programa Vulcan es tal vez la última oportunidad de Boe…
+75  Kirk, Leslie y Milton son los nombres de los tres huracanes activos simultáneamente en aguas del océano Atlántico. El evento ha llamado la atención porque es la primera vez que la coincidencia se da en estas circunstancias.\n&lt;!-- BREAK 1 --&gt;\nNunca visto. Porqu…
+76    La Antártida cada vez tiene más vegetación. Y es algo nefasto. La Antártida se ha convertido en uno de los termómetros que los científicos utilizan para medir los efectos del cambio climático. Por ejemplo, hace unas semanas nos dimos cuenta de que la Antártid…
+77    No es ningún secreto hacia dónde están mirando las grandes fortunas del planeta. De un tiempo a esta parte parece que se multiplican los proyectos de eso que se ha pasado a llamar “turismo espacial” y que hasta hace poco solo formaba parte del imaginario y la…
+78    La semana pasada contamos cómo fue el paso del huracán Milton por Estados Unidos y algunas de sus peculiaridades. Por ejemplo, fue el segundo huracán más rápido de la historia en pasar de categoría 1 a 5. Como suele ocurrir con eventos naturales de este calib…
+79    Este verano, un grupo de turistas que paseaba por el Parque Nacional de Yellowstone se llevó un buen susto cuando una explosión hidrotermal lanzó por los aires vapor de agua, rocas y suciedad. Fue solo un pequeño recordatorio del inmenso poder del supervolcán…
+80    Hace unos minutos se produjo una llamarada solar de clase X9.0 en una región muy activa del Sol. Es la fulguración más potente del actual ciclo solar, que está a punto de alcanzar su máximo. Y la más intensa en dirección a la Tierra desde 2017. Pero es pronto…
+81    Los unicornios existen. Con la fiebre de las puntocom, empezaron a surgir decenas de startups que empezaron a operar en un terreno completamente nuevo y desconocido. Una idea tenía un tremendo valor, pero sólo unas pocas llegaron a sobrevivir y menos aún se c…
+82    Barnard es el nombre que recibe una estrella conocida por los astrónomos. Hablamos de una enana roja que tiene una particularidad: es la más cercana al Sistema Solar (la estrella más cercana que se mueve independientemente de un sistema estelar). Sin embargo,…
+83    El pasado mes de julio descubrimos que una roca en el fondo del mar “corregía” el origen de la vida compleja en 1.500 millones de años antes. Habían dado con unas condiciones ambientales para la vida animal en la cuenca de Franceville (Gabón), unos sedimentos…
+84    Hasta hace poco, cuando hablábamos de rayos gamma lo hacíamos para referirnos a reacciones nucleares y fenómenos más extremos del universo, como explosiones de supernovas o agujeros negros. Sin embargo, todo cambió hace un par de décadas cuando se descubrió q…
+85    ¿Cuánto cuesta fabricar el cohete más grande del mundo? Gracias a una demanda judicial, tenemos la respuesta. La organización ambientalista Save RGV está librando una batalla legal contra SpaceX por los lanzamientos de Starship, lo que ha desvelado algunos de…
+86    Los instrumentos del Telescopio Espacial James Webb (JWST) son capaces de alcanzar algunos de los lugares más recónditos del universo en el espacio y el el tiempo. Sin embargo, de vez en cuando apuntan a lugares más cercanos para darnos una perspectiva nueva …
+87    De todos los temas que obsesionan a Elon Musk, hay dos en los que no ha cambiado de opinión desde que dirige SpaceX y Tesla : 1) la humanidad tiene que colonizar Marte para convertirse en una especie multiplanetaria, y 2) toda la actividad humana podría abast…
+88    Nuestra obsesión con Marte podría en un futuro ayudarnos a encontrar respuestas a dos de los grandes enigmas del universo: el misterio de la materia oscura y la existencia o no de los agujeros negros primordiales, agujeros negros casi tan antiguos como nuestr…
+89  Dos semanas después de que John R. Brinkley llegara a Milford (Kansas), un granjero llegó a la consulta y le pidió que le ayudara con sus problemas de virilidad.\n&lt;!-- BREAK 1 --&gt;\nBrinkley le explicó que no había tratamiento para su problema y, justo antes de …
+90    Todavía no habíamos pisado la Luna cuando el ingeniero estadounidense Peter Glaser propuso lanzar paneles solares al espacio. La idea era brillante: los paneles fotovoltaicos capturarían la energía del Sol sin ser interrumpidos por las nubes y la enviarían de…
+91                                                                                                           Timelapse footage captured by NASA astronaut Matthew Dominick shows Hurricane Milton as the powerful storm churned through the Gulf of Mexico toward Florida.
+92                                                                                                      A frozen “ocean world” is the likeliest place in the solar system to foster alien life. Louise Prockter and her colleagues persuaded NASA to send a mission there.
+93                                                                                                             NASA's Deep Space Optical Communications test has completed its first phase, showing that laser communications in space are possible and faster than radio.
+94                                                                                                                                                 NASA has shared a short video showing how astronauts aboard the International Space Station get their daily coffee fix.
+95                                                                                                                            NASA is back with its monthly update of what to look out for in the night sky over the coming weeks. And there's plenty to enjoy in October!
+96                                                                                                                        NASA astronaut Matthew Dominick has been sharing some awesome photos and videos taken during his first visit to the International Space Station.
+97                                                                                                                             An approaching hurricane has forced NASA and SpaceX to call off Thursday's planned launch of the highly anticipated Europa Clipper mission.
+98                                                                                                                                  Three American astronauts and a Russian cosmonaut are preparing to depart the International Space Station about 250 miles above Earth.
+99                                                                                                               The launch of NASA's Europa Clipper mission to the icy moon of Jupiter was delayed because of Hurricane Milton. Now, the launch could go ahead on Monday.
+100                                                                                                                                   Weather conditions in Florida mean that the return of four crew members from the International Space Station has been delayed again.
+                                                                                                                                                url
+1                                           https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_fec7de5f-6b49-4ede-a41e-9aa0b749e522
+2                                           https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_823e5495-5110-4fb8-aa8f-b9aadf52fc01
+3                                                                                                                               https://removed.com
+4                                           https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_d4dfe25f-1433-43e4-a3a9-380176fdd84f
+5                                                                                                                               https://removed.com
+6                                                      https://www.wired.com/story/europa-clipper-mission-nasa-jupiter-moon-exploration-signs-life/
+7                                              https://www.wired.com/story/coperni-spray-on-dress-viral-smash-gravity-defying-gel-bag-might-top-it/
+8                                                                                     https://www.wired.com/story/jake-sullivan-china-tech-profile/
+9                                      https://gizmodo.com/hurricane-miltons-imminent-landfall-officially-delays-nasa-mission-to-jupiter-2000508353
+10                                                https://gizmodo.com/one-of-these-two-space-observatories-could-be-nasas-next-big-thing-2000509113
+11                                         https://gizmodo.com/spacexs-dragon-capsule-can-now-land-like-a-rocket-in-case-of-an-emergency-2000511256
+12                                   https://gizmodo.com/growing-air-leak-in-russian-segment-now-deemed-greatest-iss-risk-report-reveals-2000505190
+13                                                https://gizmodo.com/can-rocket-lab-save-nasas-mission-to-bring-pieces-of-mars-to-earth-2000508381
+14                                          https://gizmodo.com/the-day-nasa-smashed-an-asteroid-what-it-was-like-inside-mission-control-2000509922
+15                                     https://gizmodo.com/nasa-forced-to-turn-off-voyager-2-instrument-due-to-spacecrafts-loss-of-power-2000506233
+16                                                https://gizmodo.com/heres-what-the-space-station-that-could-replace-the-iss-looks-like-2000511988
+17                                  https://gizmodo.com/nasa-punched-an-asteroid-in-2022-another-probe-is-now-on-its-way-to-the-wreckage-2000505950
+18                                               https://gizmodo.com/curiosity-rover-finds-clues-to-how-mars-became-a-lifeless-wasteland-2000509419
+19                                                                  https://gizmodo.com/the-latest-face-on-mars-is-the-most-dramatic-yet-2000509046
+20                                                   https://gizmodo.com/satellite-images-reveal-hurricane-helenes-devastating-aftermath-2000507474
+21                                                                       https://gizmodo.com/three-star-system-shatters-astronomy-record-2000506583
+22                                https://gizmodo.com/the-great-cosmic-atlas-begins-euclids-208-gigapixel-image-maps-14-million-galaxies-2000512179
+23                                    https://gizmodo.com/spacex-reportedly-strong-arms-spectrum-from-rivals-who-want-a-ride-on-a-rocket-2000510133
+24                                          https://gizmodo.com/jupiters-great-red-spot-is-shapeshifting-in-ways-never-identified-before-2000510327
+25                            https://gizmodo.com/secretive-space-force-vehicle-will-conduct-groundbreaking-maneuver-to-adjust-its-orbit-2000510582
+26                                                                 https://gizmodo.com/tuesdays-solar-eclipse-might-be-the-worst-one-yet-2000505725
+27                                   https://gizmodo.com/faa-launches-investigation-into-falcon-9s-missed-splashdown-after-crew-9-launch-2000506372
+28                                               https://gizmodo.com/spy-plane-uncovers-radioactive-gamma-rays-in-tropical-thunderstorms-2000505177
+29                                                    https://gizmodo.com/alienware-pro-wireless-headset-review-old-school-sound-cannons-2000508660
+30                                                                                                   https://www.bbc.com/news/articles/c5y87l79d02o
+31                                                                                                   https://www.bbc.com/news/articles/cdrj4k7kg62o
+32                                                                                                   https://www.bbc.com/news/articles/ckg9qd22k7po
+33                                                                                                   https://www.bbc.com/news/articles/c1482xzrge1o
+34                                 https://www.cnet.com/science/space/nasa-is-creating-a-time-zone-for-the-moon-in-space-every-microsecond-matters/
+35                                 https://www.cnet.com/science/comet-of-the-century-may-dazzle-earth-in-october-this-astronaut-already-has-photos/
+36                                            https://www.cnet.com/science/space/watch-for-the-northern-lights-to-put-on-a-dazzling-show-this-week/
+37                                               https://www.cnet.com/science/space/scientists-find-more-black-holes-solving-early-universe-puzzle/
+38                                    https://www.cnet.com/science/earths-mini-moon-everything-you-need-to-know-about-earths-temporary-second-moon/
+39                                                           https://www.cnet.com/science/what-you-need-to-know-about-earths-temporary-second-moon/
+40                                                https://www.npr.org/2024/10/04/nx-s1-5140131/helene-satellite-damage-impacts-space-outages-waters
+41                                                        https://www.npr.org/2024/10/10/nx-s1-5148895/how-to-see-comet-c-2023-a3-tsuchinshan-atlas
+42               https://www.npr.org/2024/10/08/g-s1-26840/up-first-newsletter-fema-disaster-response-hurricane-helene-october-7-israel-remembrance
+43                                               https://www.businessinsider.com/the-final-frontier-life-on-europa-nasa-launch-jupiter-moon-2024-10
+44                                 https://www.businessinsider.com/timeline-of-boeing-problems-alaska-airlines-strike-layoffs-starliner-max-2024-10
+45                                                 https://www.businessinsider.com/october-full-moon-when-to-see-biggest-supermoon-all-year-2024-10
+46                                                      https://www.businessinsider.com/here-are-the-executives-running-anthropic-right-now-2024-10
+47                                                                   https://www.businessinsider.com/uber-air-taxi-joby-evtol-tour-interior-2024-10
+48                                                                                https://www.businessinsider.com/horror-movies-true-stories-2018-1
+49                                                    http://hipertextual.com/2024/10/fugas-de-aire-vuelven-peligro-estacion-espacial-internacional
+50                                                                       http://hipertextual.com/2024/10/hera-dart-mision-espacial-desviar-satelite
+51                                                                                           http://hipertextual.com/2024/10/elon-musk-acero-spacex
+52                                                                            http://hipertextual.com/2024/10/spacex-starship-cohetes-reutilizables
+53                                                           https://hackaday.com/2024/10/09/lagrange-points-and-why-you-want-to-get-stuck-at-them/
+54                                               https://hackaday.com/2024/10/02/voyager-2s-plasma-spectrometer-turned-off-in-power-saving-measure/
+55                                     https://hackaday.com/2024/10/12/cockroaches-in-space-waste-processing-and-a-healthy-protein-source-combined/
+56                                                              https://hackaday.com/2024/10/03/polaris-dawn-and-the-prudence-of-a-short-spacewalk/
+57                                                                                   https://hackaday.com/2024/10/06/hackaday-links-october-6-2024/
+58                                                https://hackaday.com/2024/10/10/supercon-2023-receiving-microwave-signals-from-deep-space-probes/
+59         https://www.digitalcameraworld.com/news/34-year-old-hubble-telescope-does-it-again-nasa-uncovers-unusual-galaxy-using-hubble-photography
+60                                                                  https://www.yahoo.com/news/astronomical-explosion-4k-hubble-view-160000572.html
+61                                                        https://finance.yahoo.com/news/italys-spacewear-develop-training-clothing-094226472.html/
+62                                           https://www.tennessean.com/story/news/2024/10/15/when-october-full-moon-2024-hunters-moon/75631752007/
+63                https://www.beaconjournal.com/story/news/2024/10/03/northern-lights-forecast-tonight-visible-in-ohio-aurora-borealis/75499046007/
+64          https://www.courier-journal.com/story/weather/2024/10/11/auroras-kentucky-northern-lights-2024-nasa-coronal-mass-ejections/75625230007/
+65                                                      https://robbreport.com/motors/aviation/spacex-starship-rocket-launchpad-landing-1235951070/
+66                                                           https://time.com/7081260/comet-tsuchinshan-atlas-sighting-october-2024-when-to-see-it/
+67                                                     https://time.com/7086440/spacex-launches-mega-starship-rocket-mechanical-arms-catch-landing/
+68                              https://www.xataka.com/espacio/iss-tiene-serio-problema-esta-modulo-ruso-unas-grietas-han-hecho-saltar-alarmas-nasa
+69                                   https://www.xataka.com/espacio/20-anos-espera-nasa-ha-lanzado-naves-grandes-historia-su-fin-buscar-vida-europa
+70                                   https://www.xataka.com/espacio/cohetes-nucleares-posible-llegar-a-marte-mitad-tiempo-problema-diseno-reactores
+71                   https://www.xataka.com/espacio/nave-hera-va-camino-asteroide-que-desvio-nasa-para-lanzarla-hizo-falta-falcon-9-rapido-historia
+72                                    https://www.xataka.com/espacio/sol-esta-entrando-su-maximo-intenso-esperado-pronostico-auroras-impresionantes
+73                                https://www.xataka.com/espacio/nuevo-fallo-cohete-falcon-9-ha-paralizado-lanzamientos-spacex-peor-momento-posible
+74                         https://www.xataka.com/espacio/ultima-bala-boeing-sector-espacial-cohete-vulcan-exito-tendra-oportunidad-competir-spacex
+75                         https://www.xataka.com/ecologia-y-naturaleza/nunca-habiamos-visto-tres-huracanes-a-vez-atlantico-pleno-mes-octubre-ahora
+76          https://www.xataka.com/ecologia-y-naturaleza/imagenes-satelitales-antartida-revelan-algo-inquietante-ha-empezado-a-ser-verde-que-blanca
+77        https://www.xataka.com/espacio/primera-estacion-espacial-comercial-para-millonarios-parece-sacada-2001-kubrick-solo-le-falta-ia-que-hable
+78                   https://www.xataka.com/energia/huracan-milton-dejo-agua-potable-parte-florida-entonces-llego-maquina-para-recolectar-agua-aire
+79       https://www.xataka.com/energia/supervolcan-temido-mundo-se-esta-moviendo-hay-quien-propone-perforarlo-ahora-para-extraer-energia-ilimitada
+80                                  https://www.xataka.com/espacio/sol-acaba-dispararnos-su-llamarada-potente-esta-decada-maximo-solar-esta-al-caer
+81                             https://www.xataka.com/empresas-y-economia/diez-unicornios-valiosos-2024-ilustrados-revelador-grafico-industria-tech
+82     https://www.xataka.com/espacio/hemos-encontrado-algo-sorprendente-estrella-cercana-al-sol-mundo-diminuto-donde-ano-dura-tres-dias-terrestres
+83             https://www.xataka.com/ecologia-y-naturaleza/a-solo-15-metros-tierra-roca-se-escondia-algo-fascinante-forma-vida-2-000-millones-anos
+84                https://www.xataka.com/ecologia-y-naturaleza/avion-espia-eeuu-se-adentro-tormenta-tropical-ha-dado-algo-sorprendente-radioactivas
+85                             https://www.xataka.com/espacio/cuanto-cuesta-desarrollar-cohete-starship-importante-donde-esta-sacando-spacex-dinero
+86                 https://www.xataka.com/espacio/james-webb-acaba-descubrir-agua-oxigenada-sitio-insospechado-que-se-nos-podia-ocurrir-luna-pluton
+87            https://www.xataka.com/energia/elon-musk-dice-que-toda-energia-mundo-provendra-paneles-solares-cuando-gente-entienda-escala-kardashev
+88          https://www.xataka.com/espacio/agujeros-negros-que-nos-visitan-cada-10-anos-hipotesis-que-situa-a-misteriosos-objetos-cerca-que-creemos
+89  https://www.xataka.com/medicina-y-salud/siglos-buscando-tratamiento-para-disfuncion-erectil-este-medico-tuvo-idea-transplantar-testiculos-cabra
+90        https://www.xataka.com/espacio/panel-solar-lleva-siete-anos-orbitando-tierra-ahora-sabemos-que-parques-fotovoltaicos-espaciales-viables-1
+91                                                https://abcnews.go.com/International/video/timelapse-video-shows-hurricane-milton-space-114621669
+92                         https://www.newyorker.com/culture/persons-of-interest/the-woman-who-helped-send-a-spacecraft-to-europa-jupiters-icy-moon
+93                                                                             https://www.digitaltrends.com/space/nasa-dsoc-completes-first-phase/
+94                                                                        https://www.digitaltrends.com/space/how-astronauts-drink-coffee-in-space/
+95                                                                      https://www.digitaltrends.com/space/nasa-skywatching-tips-for-october-2024/
+96                                                              https://www.digitaltrends.com/space/astronaut-matthew-dominick-best-shots-from-iss/
+97                                             https://www.digitaltrends.com/space/nasa-postpones-launch-of-europa-clipper-mission-to-jupiter-moon/
+98                                                                https://www.digitaltrends.com/space/how-to-watch-crew-8-depart-the-space-station/
+99                                                                           https://www.digitaltrends.com/space/europa-clipper-launch-live-stream/
+100                                                                                     https://www.digitaltrends.com/space/crew-8-departure-delay/
+                                                                                                                                                                                                                                  urlToImage
+1                                                                                                                                                                                                                                       &lt;NA&gt;
+2                                                                                                                                                                                                                                       &lt;NA&gt;
+3                                                                                                                                                                                                                                       &lt;NA&gt;
+4                                                                                                                                                                                                                                       &lt;NA&gt;
+5                                                                                                                                                                                                                                       &lt;NA&gt;
+6                                                                                                                                          https://media.wired.com/photos/66f16c2d837fa2f3c1c44f3e/191:100/w_1280,c_limit/PIA24321~large.jpg
+7                                                                                                                                  https://media.wired.com/photos/66fd467140a8f70164da2d56/191:100/w_1280,c_limit/GettyImages-2176008474.jpg
+8                                                                                                                             https://media.wired.com/photos/6706b71e702ff9d188601297/191:100/w_1280,c_limit/Voss-Sullivan34FINAL_social.jpg
+9                                                                                                                                                                     https://gizmodo.com/app/uploads/2024/10/kennedy-space-center-storm.jpg
+10                                                                                                                                                                             https://gizmodo.com/app/uploads/2024/10/swift-observatory.jpg
+11                                                                                                                                                                                 https://gizmodo.com/app/uploads/2024/10/spacex-dragon.jpg
+12                                                                                                                                                                  https://gizmodo.com/app/uploads/2024/09/international-space-station.jpeg
+13                                                                                                                                                                   https://gizmodo.com/app/uploads/2024/10/Perseverance-Rover-on-Mars.jpeg
+14                                                                                                                                                                  https://gizmodo.com/app/uploads/2024/08/dart-asteroid-mission-debris.jpg
+15                                                                                                                                                            https://gizmodo.com/app/uploads/2024/10/1-voyager_before_launch.width-1320.jpg
+16                                                                                                                                                            https://gizmodo.com/app/uploads/2024/10/Vast_Haven-2_Full_Configuration_V1.jpg
+17                                                                                                                                                          https://gizmodo.com/app/uploads/2024/10/luciacube-dimorphos-dart-nasa-impact.jpg
+18                                                                                                                                                                  https://gizmodo.com/app/uploads/2024/10/Mars-wet-oceans-habitability.jpg
+19                                                                                                                                                                                     https://gizmodo.com/app/uploads/2024/10/Face-Mars.jpg
+20                                                                                                                                                                https://gizmodo.com/app/uploads/2024/10/NOAA-20-satellite-helene-power.jpg
+21                                                                                                                                                                https://gizmodo.com/app/uploads/2024/10/three-star-system-orbit-record.jpg
+22                                                                                                                                                                 https://gizmodo.com/app/uploads/2024/10/euclid-space-telescope-cosmos.jpg
+23                                                                                                                                                                        https://gizmodo.com/app/uploads/2024/10/GettyImages-2158701295.jpg
+24                                                                                                                                                                               https://gizmodo.com/app/uploads/2024/10/Great-Red-Spot.jpeg
+25                                                                                                                                                                                  https://gizmodo.com/app/uploads/2024/10/spaceplane-.jpeg
+26                                                                                                                                                                      https://gizmodo.com/app/uploads/2024/10/annular-eclipse-sun-moon.jpg
+27                                                                                                                                                                   https://gizmodo.com/app/uploads/2024/10/NASA-SpaceX-Crew-9-liftoff.jpeg
+28                                                                                                                                                              https://gizmodo.com/app/uploads/2024/10/spy-plane-gamme-ray-thunderstorm.jpg
+29                                                                                                                                                              https://gizmodo.com/app/uploads/2024/10/Alienware-Pro-Wireless-Headset-1.jpg
+30                                                                                                                                        https://ichef.bbci.co.uk/news/1024/branded_news/c161/live/52fbf6f0-88b4-11ef-b0c4-1f51bafce40e.jpg
+31                                                                                                                                        https://ichef.bbci.co.uk/news/1024/branded_news/9007/live/2fd79be0-896b-11ef-b39e-cf9068ab5e0b.png
+32                                                                                                                                        https://ichef.bbci.co.uk/news/1024/branded_news/376c/live/49792bc0-7f4a-11ef-b266-c1a332524046.jpg
+33                                                                                                                                        https://ichef.bbci.co.uk/news/1024/branded_news/f8f0/live/a727cc10-89d4-11ef-81f8-1f28bcc5be15.jpg
+34                                     https://www.cnet.com/a/img/resize/55c708c57d7b9ee1c83ac141a15e338df9a05a46/hub/2022/10/13/31af7c55-d3d3-4086-857c-b7d3ee364cc6/20221007-moon-zoom-30x-02.jpg?auto=webp&amp;fit=crop&amp;height=675&amp;width=1200
+35                                                   https://www.cnet.com/a/img/resize/53ed3faff75ebaaff2736ed8b10945ce9d84574e/hub/2024/09/24/423e8e47-a333-43d2-835b-d8c7dbba8d55/cometpettit.jpg?auto=webp&amp;fit=crop&amp;height=675&amp;width=1200
+36                                     https://www.cnet.com/a/img/resize/eedf813b503a8e99e56c1ead8abb9963abff4484/hub/2021/05/10/c6da5cc2-163f-49b4-a09d-febdcd499a50/nasa-aurora-iss052e007857.jpg?auto=webp&amp;fit=crop&amp;height=675&amp;width=1200
+37                                        https://www.cnet.com/a/img/resize/c2507da5a8d54f8cbf637178923ef946ef0112b3/hub/2024/10/07/e01bd901-af57-4632-80c5-d12a6be712f1/gettyimages-1240620228.jpg?auto=webp&amp;fit=crop&amp;height=675&amp;width=1200
+38                                      https://www.cnet.com/a/img/resize/4f69e17b7ce07ca8f23dae3aa5496ce075891a31/hub/2024/09/14/27b11eb9-1f1f-466a-b589-15534c9a6119/gettyimages-2070543169-1.jpg?auto=webp&amp;fit=crop&amp;height=675&amp;width=1200
+39                                      https://www.cnet.com/a/img/resize/4f69e17b7ce07ca8f23dae3aa5496ce075891a31/hub/2024/09/14/27b11eb9-1f1f-466a-b589-15534c9a6119/gettyimages-2070543169-1.jpg?auto=webp&amp;fit=crop&amp;height=675&amp;width=1200
+40     https://npr.brightspotcdn.com/dims3/default/strip/false/crop/720x405+0+119/resize/1400/quality/100/format/jpeg/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Fed%2Fd4%2F693b7b3f430aa1d74c476658068b%2Faugusta-bmhd-20240831.jpg
+41    https://npr.brightspotcdn.com/dims3/default/strip/false/crop/1024x576+0+54/resize/1400/quality/100/format/jpeg/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F45%2F4b%2F8b2fe75242f3bc017fe6e2bd310e%2Fgettyimages-2174280642.jpg
+42  https://npr.brightspotcdn.com/dims3/default/strip/false/crop/3000x1688+0+313/resize/1400/quality/100/format/jpeg/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F71%2Fd4%2F1026049f4044970ba5df4a525513%2Fgettyimages-2175923792.jpg
+43                                                                                                                                                                     https://i.insider.com/670e49333f2165d716e0c700?width=1200&amp;format=jpeg
+44                                                                                                                                                                     https://i.insider.com/670aa414a703186492818065?width=1200&amp;format=jpeg
+45                                                                                                                                                                     https://i.insider.com/670eb7e83f2165d716e13d6d?width=1200&amp;format=jpeg
+46                                                                                                                                                                     https://i.insider.com/670583ef198738e3a70f27b8?width=1200&amp;format=jpeg
+47                                                                                                                                                                     https://i.insider.com/6700172f198738e3a70e549e?width=1200&amp;format=jpeg
+48                                                                                                                                                                     https://i.insider.com/67069cc5a703186492808848?width=1200&amp;format=jpeg
+49                                                                                                                                              https://imgs.hipertextual.com/wp-content/uploads/2022/07/estacion_espacial_internacional.jpg
+50                                                                                                                                                                https://imgs.hipertextual.com/wp-content/uploads/2024/10/Hera_in_orbit.jpg
+51                                                                                                                                                     https://imgs.hipertextual.com/wp-content/uploads/2024/10/52822653443_d2dceaca61_k.jpg
+52                                                                                                                                            https://imgs.hipertextual.com/wp-content/uploads/2023/11/JJBHA6GWZ5PELLHBLHJPDTKXXY-scaled.jpg
+53                                                                                                                                                                               https://hackaday.com/wp-content/uploads/2024/09/Larange.jpg
+54                                                                                                                                                                              https://hackaday.com/wp-content/uploads/2024/04/Voyager2.jpg
+55                                                                                                                                                             https://hackaday.com/wp-content/uploads/2024/10/Insect_bioreactor_article.jpg
+56                                                                                                                                                                              https://hackaday.com/wp-content/uploads/2024/09/eva_feat.jpg
+57                                                                                                                                                                      https://hackaday.com/wp-content/uploads/2014/11/had-links-banner.jpg
+58                                                                                                                                                                               https://hackaday.com/wp-content/uploads/2024/09/mainer1.jpg
+59                                                  https://s.yimg.com/ny/api/res/1.2/YaFKP23UrGOUI5ltGanWJA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02NzU-/https://media.zenfs.com/en/digital_camera_world_590/b0882d5b899ddf1e0399af87b334261d
+60                                                                                                                                                                     https://media.zenfs.com/en/space_311/62d1345d9eb57b97c1a96dd818065f05
+61                                                                                                                                                                          https://s.yimg.com/cv/apiv2/social/images/yahoo_default_logo.png
+62                                          https://s.yimg.com/ny/api/res/1.2/WF4itWxuIArh8rWNvcCfag--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD05MjI-/https://media.zenfs.com/en/the_tennessean_natl_articles_921/80519c1179fbf81df707b174ba03e1e1
+63                                                                                                                                                          https://media.zenfs.com/en/akron-beacon-journal/5c5c297ae5355e89b561b8cc56664a05
+64                                                       https://s.yimg.com/ny/api/res/1.2/B0cRPx9FTYDvIFrQ5N0ceQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD03Nzk-/https://media.zenfs.com/en/the-courier-journal/d38446c890d2c579701850baefa948b9
+65                                                                                                                                                               https://media.zenfs.com/en/robb_report_967/be74cc9ed2595b54068dee42c54f482c
+66                                                                                                                                       https://api.time.com/wp-content/uploads/2024/10/AP24276314704512.jpg?quality=85&amp;w=1200&amp;h=628&amp;crop=1
+67                                                                                                                                       https://api.time.com/wp-content/uploads/2024/10/AP24287087285100.jpg?quality=85&amp;w=1200&amp;h=628&amp;crop=1
+68                                                                                                                                                                            https://i.blogs.es/5eae25/3909276030_f438725357_k/840_560.jpeg
+69                                                                                                                                                                                     https://i.blogs.es/05e075/europa-clipper/840_560.jpeg
+70                                                                                                                                                                                          https://i.blogs.es/d57d2a/spacex-ap/840_560.jpeg
+71                                                                                                                                                                                           https://i.blogs.es/744e53/hera-esa/840_560.jpeg
+72                                                                                                                                                                                            https://i.blogs.es/d5f575/auroras/840_560.jpeg
+73                                                                                                                                                                                            https://i.blogs.es/6dacbc/falcon9/840_560.jpeg
+74                                                                                                                                                                                    https://i.blogs.es/9b6748/gzbpnqnwqaa7rpn/840_560.jpeg
+75                                                                                                                                                                           https://i.blogs.es/e70800/tres-huracanes-nasa-edit/840_560.jpeg
+76                                                                                                                                                                                          https://i.blogs.es/9667c3/antartida/840_560.jpeg
+77                                                                                                                                                                    https://i.blogs.es/cb3dd9/ps---plantilla-portadas-xtk-189/840_560.jpeg
+78                                                                                                                                                                    https://i.blogs.es/56d6e4/ps---plantilla-portadas-xtk-196/840_560.jpeg
+79                                                                                                                                                                                        https://i.blogs.es/67e687/yellowstone/840_560.jpeg
+80                                                                                                                                                                                       https://i.blogs.es/e2a62c/sol-nasa-sol/840_560.jpeg
+81                                                                                                                                                                                         https://i.blogs.es/e75db1/unicornios/840_560.jpeg
+82                                                                                                                                                                    https://i.blogs.es/7a5419/barnard-star-exoplanet-1400x932/840_560.jpeg
+83                                                                                                                                                                                        https://i.blogs.es/195ff6/microbe-life/840_560.png
+84                                                                                                                                                          https://i.blogs.es/f5aa7f/spy-plane-gamme-ray-thunderstorm-1400x932/840_560.jpeg
+85                                                                                                                                                                                   https://i.blogs.es/4ab565/1spacex-starship/840_560.jpeg
+86                                                                                                                                                                                      https://i.blogs.es/baba41/pluton-caronte/840_560.png
+87                                                                                                                                                                                      https://i.blogs.es/49a7bd/sol-elon-musk/840_560.jpeg
+88                                                                                                                                                                           https://i.blogs.es/950141/marte-agujero-negro-edit/840_560.jpeg
+89                                                                                                                                                                                       https://i.blogs.es/3ee195/plantilla-xtk/840_560.png
+90                                                                                                                                                                                https://i.blogs.es/3ed28a/al-sat-nano-media_0/840_560.jpeg
+91                                                                                                                              https://i.abcnewsfe.com/a/0fe0ff27-7b26-4f8e-9fbf-2b680380b33c/241008_abc_social_space_hpMain_16x9.jpg?w=992
+92                                                                                                                      https://media.newyorker.com/photos/670d7a07a2697e1904450edb/16:9/w_1280,c_limit/cut-Brown-GettyImages-2177675340.jpg
+93                                                                                                                                          https://www.digitaltrends.com/wp-content/uploads/2024/10/1_dsoc-uplink.jpg?resize=1200%2C630&amp;p=1
+94                                                                                                                                        https://www.digitaltrends.com/wp-content/uploads/2024/10/coffee-in-space.jpg?resize=1200%2C630&amp;p=1
+95                                                                                                                                             https://www.digitaltrends.com/wp-content/uploads/2024/09/iss-comet.jpeg?resize=1200%2C630&amp;p=1
+96                                                                                                                                         https://www.digitaltrends.com/wp-content/uploads/2024/10/moon-earth-iss.jpg?resize=1200%2C630&amp;p=1
+97                                                                                                                                   https://www.digitaltrends.com/wp-content/uploads/2023/12/falcon-heavy-rocket.jpeg?resize=1200%2C630&amp;p=1
+98                                                                                                                                       https://www.digitaltrends.com/wp-content/uploads/2024/02/ax-3-departs-iss.jpg?resize=1200%2C630&amp;p=1
+99                                                                                           https://www.digitaltrends.com/wp-content/uploads/2024/10/e3-pia26068-europa-clipper-spacecraft-stylized-illustration1.jpg?resize=1200%2C630&amp;p=1
+100                                                                                                                                       https://www.digitaltrends.com/wp-content/uploads/2024/10/GZsVp9baAAMItUT.jpg?resize=1200%2C630&amp;p=1
+             publishedAt
+1   2024-10-08T13:30:27Z
+2   2024-10-10T12:00:53Z
+3   2024-10-15T11:00:41Z
+4   2024-10-03T13:00:05Z
+5   2024-10-04T11:24:37Z
+6   2024-10-11T12:16:16Z
+7   2024-10-02T14:49:43Z
+8   2024-10-10T10:00:00Z
+9   2024-10-07T21:15:08Z
+10  2024-10-08T17:45:27Z
+11  2024-10-13T11:00:52Z
+12  2024-10-01T14:22:00Z
+13  2024-10-07T20:15:08Z
+14  2024-10-12T10:00:18Z
+15  2024-10-02T16:40:37Z
+16  2024-10-15T18:25:23Z
+17  2024-10-07T16:15:29Z
+18  2024-10-09T09:00:45Z
+19  2024-10-08T16:45:07Z
+20  2024-10-04T16:20:39Z
+21  2024-10-03T14:20:37Z
+22  2024-10-15T20:40:35Z
+23  2024-10-09T21:30:10Z
+24  2024-10-10T16:35:17Z
+25  2024-10-10T20:50:10Z
+26  2024-10-01T16:55:17Z
+27  2024-10-02T20:10:49Z
+28  2024-10-02T15:00:09Z
+29  2024-10-08T15:00:05Z
+30  2024-10-12T17:26:20Z
+31  2024-10-13T15:10:13Z
+32  2024-10-01T00:08:43Z
+33  2024-10-14T02:34:30Z
+34  2024-10-11T14:00:13Z
+35  2024-10-01T18:45:00Z
+36  2024-10-02T22:47:02Z
+37  2024-10-14T23:00:03Z
+38  2024-10-05T15:00:03Z
+39  2024-10-14T17:30:02Z
+40  2024-10-04T18:22:17Z
+41  2024-10-10T18:30:55Z
+42  2024-10-08T12:06:07Z
+43  2024-10-15T11:20:21Z
+44  2024-10-13T18:14:42Z
+45  2024-10-15T22:27:29Z
+46  2024-10-09T13:41:47Z
+47  2024-10-07T18:50:13Z
+48  2024-10-12T13:35:07Z
+49  2024-10-02T13:15:42Z
+50  2024-10-07T13:36:08Z
+51  2024-10-03T08:19:11Z
+52  2024-10-14T11:39:53Z
+53  2024-10-09T14:00:03Z
+54  2024-10-03T02:00:10Z
+55  2024-10-12T20:00:00Z
+56  2024-10-03T14:00:39Z
+57  2024-10-06T23:00:04Z
+58  2024-10-10T17:00:23Z
+59  2024-10-07T12:13:51Z
+60  2024-10-06T16:00:00Z
+61  2024-10-07T09:42:26Z
+62  2024-10-15T10:00:26Z
+63  2024-10-03T20:57:23Z
+64  2024-10-11T13:24:54Z
+65  2024-10-14T14:00:00Z
+66  2024-10-09T16:41:48Z
+67  2024-10-13T12:57:12Z
+68  2024-10-01T11:01:01Z
+69  2024-10-14T18:29:37Z
+70  2024-10-09T15:31:15Z
+71  2024-10-08T13:01:06Z
+72  2024-10-10T13:45:39Z
+73  2024-10-02T07:58:42Z
+74  2024-10-04T06:45:20Z
+75  2024-10-08T14:01:09Z
+76  2024-10-12T10:31:42Z
+77  2024-10-11T10:31:32Z
+78  2024-10-15T16:30:47Z
+79  2024-10-03T13:30:38Z
+80  2024-10-03T15:06:35Z
+81  2024-10-12T09:31:43Z
+82  2024-10-02T13:01:07Z
+83  2024-10-07T11:00:53Z
+84  2024-10-05T15:30:59Z
+85  2024-10-15T18:30:17Z
+86  2024-10-02T19:01:12Z
+87  2024-10-01T22:03:35Z
+88  2024-10-04T09:00:49Z
+89  2024-10-06T15:00:46Z
+90  2024-10-12T07:01:42Z
+91  2024-10-08T21:42:42Z
+92  2024-10-15T13:57:50Z
+93  2024-10-05T14:14:49Z
+94  2024-10-02T02:00:48Z
+95  2024-10-03T01:40:58Z
+96  2024-10-07T06:35:29Z
+97  2024-10-07T00:38:04Z
+98  2024-10-10T05:40:37Z
+99  2024-10-12T17:24:55Z
+100 2024-10-13T17:54:44Z
+                                                                                                                                                                                                                           content
+1            If you click 'Accept all', we and our partners, including 240 who are part of the IAB Transparency &amp;amp; Consent Framework, will also store and/or access information on a device (in other words, use … [+678 chars]
+2            If you click 'Accept all', we and our partners, including 240 who are part of the IAB Transparency &amp;amp; Consent Framework, will also store and/or access information on a device (in other words, use … [+678 chars]
+3                                                                                                                                                                                                                        [Removed]
+4            If you click 'Accept all', we and our partners, including 240 who are part of the IAB Transparency &amp;amp; Consent Framework, will also store and/or access information on a device (in other words, use … [+678 chars]
+5                                                                                                                                                                                                                        [Removed]
+6           If were going to find life on another world, Europa might just be our best bet. We think this icy moon of Jupiter has an ocean of water beneath its frozen surface, and it seems like this ocean might … [+2533 chars]
+7           Coperni has yet to decide how many RLP Swipe Bags will be put into production, but for Meyer, starting a conversation around these innovations is more important than immediate commercial success. Its… [+2689 chars]
+8           The Dutch and the Japanese would go on to unveil their own sweeping controls on semiconductor manufacturing equipment, including ASMLs DUV machines and almost two dozen tools produced in Japan. Both … [+3465 chars]
+9         NASA’s Europa Clipper, a mission set to probe Jupiter’s icy moon, will no longer launch on Thursday due to a Category 5 hurricane making its way towards Florida.\r\nThe spacecraft’s launch window opens… [+3427 chars]
+10        Last week, NASA selected two mission proposals for further review, paving the way for one of them to eventually be made into a real nuts-and-bolts spacecraft.\r\nThese proposals come out of NASA’s Expl… [+2890 chars]
+11          Over the past four years, the Dragon spacecraft has returned eight NASA crews by performing a parachute-assisted splashdown in the ocean, but the crew capsule now has a backup landing method in the e… [+2332 chars]
+12          The International Space Station (ISS) houses astronauts at an altitude of 250 miles above the surface of Earth in a (mostly) sealed environment. For the past five years, however, air has been escapin… [+4361 chars]
+13          For more than three years, NASA’s Perseverance rover has been roaming the Martian landscape, collecting bits and pieces of rocks to be probed by scientists here on Earth. The space agency had come up… [+4293 chars]
+14          Around 66 million years ago, a massive asteroid stretching 6 miles (10 kilometers) across struck Earth, ending the reign of the dinosaurs. Today, the probability of an asteroid that size wiping out h… [+6421 chars]
+15        NASA’s aging interstellar probe is gradually losing power, forcing the space agency to shut down one of its science instruments to conserve its energy.\r\nLaunched in 1977, NASA’s Voyager 2 mission has… [+3374 chars]
+16          NASA’s International Space Station (ISS) has been dominating low Earth orbit for more than 25 years, housing groups of astronauts in the microgravity environment. The orbital lab’s time in space, how… [+3192 chars]
+17          In September 2022, a NASA spacecraft smashed into a tiny asteroid to slightly nudge it as a test of planetary defense. A follow-up mission has now launched, aiming to rendezvous with the same space r… [+3448 chars]
+18          NASAs Curiosity rover has added a new wrinkle to the theory that the surface of Mars was once hospitable to alien life.&nbsp;New chemical analysis of Martian dirt hints at eras in the planet’s past where … [+4253 chars]
+19          For years, NASA’s six-wheeled robots have roamed the Martian terrain, collecting precious data and capturing images of their journey. Every now and then, something will appear in the photos that look… [+2706 chars]
+20        Satellite images of the American southeast taken over the past few days are showcasing the disastrous impacts of Hurricane Helene at scale.\r\nThe images were taken by National Oceanic and Atmospheric … [+3345 chars]
+21        If youve watched Netflixs 3 Body Problem, or read the novels, the following might make you a tad nervous: NASA has discovered a distant trio of celestial objects locked in a complex orbital dance.\r\nT… [+3132 chars]
+22        ESA scientists today revealed the first chunk of what will be the largest-ever 3D map of the cosmos.\r\nThe sparkling purplish-blue tapestry showcases data from 260 observations by the Euclid space tel… [+2349 chars]
+23          SpaceX started as a company developing reusable rockets in hopes of lowering the cost of entering space. They have been successful at that, and many clients including NASA now rely on SpaceX to send … [+2937 chars]
+24          A massive storm has been raging on Jupiter for centuries, and, for the most part, has appeared very serious. A new series of detailed images, however, revealed that the famous red cyclone can get a l… [+3491 chars]
+25        After spending a little over 10 months in space, the U.S. Space Force’s experimental spaceplane known as X-37B will attempt to use Earth’s atmospheric drag to change its orbit for the first time.\r\nSp… [+2797 chars]
+26          Few sights in nature can match the sheer majesty and awe of a solar eclipse. The primordial cosmic entities that make up our little corner of the impossibly vast universe align in just such a way tha… [+3370 chars]
+27          It looks like the Falcon 9 rocket won’t be flying again anytime soon. The Federal Aviation Administration (FAA) has requested an investigation into SpaceX’s launch of its Crew-9 mission as a result o… [+2719 chars]
+28        Thunderstorms in the tropics are literally radioactive, according to a team of researchers that recently used a retrofitted spy plane to survey the phenomena.\r\nThe team’s research was published in tw… [+4321 chars]
+29          Like all of Alienwares recent products, such as the gaming brands Aurora PCs and most recent&nbsp;laptops, the $230 Alienware Pro Wireless Headset says no to UFO, bearing a more modern aesthetic you see o… [+8325 chars]
+30        A comet that was seen from Earth last month for the first time in 80,000 years might be visible with the naked eye in the UK on Saturday evening, according to the Royal Astronomical Society (RAS).\r\nT… [+2407 chars]
+31        A rare comet has been snapped hurtling through the night skies over part of the West Midlands.\r\nJoanna, from the Black Country, shared an image of Comet A3 (Tsuchinshan-ATLAS) with BBC News, taken at… [+1212 chars]
+32      Prof Brian Cox is a physicist and musician\r\nProf Brian Cox says he is prepared to boldly go where no British TV presenter has gone before.\r\nIve not yet raised the funds, or convinced someone to give … [+5176 chars]
+33      The spacecraft has been developed at NASA's Jet Propulsion Laboratory in California\r\nIn a few hours, a spacecraft should blast-off from Florida on the hunt for signs of alien life.\r\nIts destination i… [+5307 chars]
+34          Time zones make it easy to know that when it's 3 p.m. in New York, it's noon in L.A. But what time is it on the moon? Back in April, the&nbsp;Biden-Harris administration asked&nbsp;NASA to come up with a time … [+2050 chars]
+35          Comets viewable from Earth are very rare, creating spectacular events in the night sky. Recently discovered Comet Tsuchinshan-ATLAS -- also called C/2023-A3 or Comet A3 -- could give us a big show as… [+2535 chars]
+36          The sun is in a time of high activity, and that's great news for fans of the Northern Lights, a shining show that paints the sky with waving streaks of green, red and purple. The sun just spit out a … [+2601 chars]
+37          Black holes are about as mysterious as deep space gets, with&nbsp;plenty of puzzles that scientists have yet to solve. One conundrum is how some supermassive black holes became so big early in the univers… [+3273 chars]
+38          A new "mini-moon" the size of a city bus is circling our planet and will continue hanging out in our skies until Thanksgiving week. It's an asteroid named 2024 PT5, which entered Earth's orbit on Sep… [+2447 chars]
+39          Sometimes, life really does resemble a science fiction movie. For the past couple of weeks, Earth's orbit has been home to a "mini-moon" the size of a city bus. The celestial object is more than just… [+2649 chars]
+40          Hurricane Helene left a trail of destruction and flooding in its wake, scouring a broad path through the Southeast and leaving a death toll that has climbed as emergency teams reach areas cut off by … [+3173 chars]
+41        A comet discovered last year known as C/2023 A3 Tsuchinshan-ATLAS is set to make a close approach to Earth in the coming days.\r\nThe snowy dirtball is nearly 2 miles in diameter and its tail of dust a… [+1911 chars]
+42        Good morning. You're reading the Up First newsletter.&nbsp;Subscribe&nbsp;here to get it delivered to your inbox, and&nbsp;listen&nbsp;to the Up First podcast for all the news you need to start your day.\r\nToday's top st… [+6099 chars]
+43        NASA/JPL-Caltech/SETI Institute\r\n&lt;ul&gt;&lt;li&gt;This excerpt originally appeared in the Insider Today newsletter.&lt;/li&gt;&lt;li&gt;You can sign up for Business Insider's daily newsletter here.&lt;/li&gt;&lt;/ul&gt;Is there life… [+2450 chars]
+44       Boeing has faced a near-constant string of hurdles in 2024.PATRICK T. FALLON/Getty Images\r\n&lt;ul&gt;&lt;li&gt;Boeing is having a rough year.&lt;/li&gt;&lt;li&gt;The company has faced mechanical problems, lawsuits, a leader… [+11313 chars]
+45        October's full moon is known as the Hunter's Moon, and this year's is a supermoon.Gary Hershorn/Getty Images\r\n&lt;ul&gt;&lt;li&gt;The third supermoon of the year will rise this week.&lt;/li&gt;&lt;li&gt;Supermoons occur whe… [+3591 chars]
+46        Anthropic's Dario Amodei, Jack Clark, and Daniela AmodeiAnthropic\r\n&lt;ul&gt;&lt;li&gt;Anthropic has emerged as one of the primary contenders in the AI arms race.&lt;/li&gt;&lt;li&gt;The company was founded by a group of fo… [+8483 chars]
+47        A selfie of the author with the Joby eVTOL in New York City.Taylor Rains/Business Insider\r\n&lt;ul&gt;&lt;li&gt;Joby Aviation plans to launch commercial "air taxis" in New York City and Los Angeles in 2025.&lt;/li&gt;&lt;… [+8398 chars]
+48     "The Conjuring.”Warner Bros.\r\n&lt;ul&gt;\n&lt;li&gt;Horror films have produced some of the most iconic figures in pop culture.&lt;/li&gt;\n&lt;li&gt;But not all scary movies are completely fictional; some are actually based o… [+22452 chars]
+49          Las fugas de aire no son una novedad en la Estación Espacial Internacional (EEI). Hace años que los astronautas en sus instalaciones y los ingenieros desde la Tierra han tenido que lidiar con ellas p… [+2175 chars]
+50          Todas las agencias espaciales están muy interesadas en encontrar la forma de desviar asteroides que se acerquen peligrosamente a la Tierra. De momento no se ha detectado ninguno que ponga en peligro … [+2174 chars]
+51      Publicado enCiencia\r\nHay una explicación tras la decisión de SpaceX de usar acero inoxidable en vez de materiales mucho más ligeros. \r\nVuelo de prueba de la nave Starship de SpaceX. Official SpaceX P… [+6746 chars]
+52        Publicado enCiencia\r\nEl nuevo vuelo de prueba de la Starship de SpaceX ha hecho historia por la torre que ha captado el cohete de vuelta en el aire. Esto, sin duda, es algo sin precedentes. Pero la i… [+6414 chars]
+53        Visualization of the Sun-Earth Lagrange points.\r\nOrbital mechanics is a fun subject, as it involves a lot of seemingly empty space that’s nevertheless full of very real forces, all of which must be t… [+8793 chars]
+54          The Voyager 2 spacecraft’s energy budget keeps dropping by about 4 Watt/year, as the plutonium in its nuclear power source is steadily dropping as the isotope decays. With 4 Watt of power less to use… [+1288 chars]
+55          As the current frontier of humanity in space, the International Space Station is heavily reliant on Earth not only for fresh supplies but also as a garbage disposal service for the various types of w… [+1644 chars]
+56         For months before liftoff, the popular press had been hyping up the fact that the Polaris Dawn mission would include the first-ever private spacewalk. Not only would this be the first time anyone who… [+11395 chars]
+57          Remember that time a giant cylindrical aquarium in a Berlin hotel bar catastrophically failed and left thousands of fish homeless? We sure do, and further recall that at the time, we were very curiou… [+4922 chars]
+58          Here’s the thing about radio signals. There is wild and interesting stuff just getting beamed around all over the place. Phrased another way, there are beautiful signals everywhere for those with ear… [+5532 chars]
+59        When you buy through links on our articles, Future and its syndication partners may earn a commission.\r\nProving its worth despite its age yet again, the Hubble Space Telescope has captured an image o… [+2386 chars]
+60           The Hubble Space Telescope has captured imagery of an object 9,000 light-years way known as IRAS 05506+2414. It "may be an example of an explosive event caused by the disruption of a massive young st… [+116 chars]
+61        By Marta Di Donfrancesco\r\nROME (Reuters) - Italy's Spacewear has closed a deal with Virgin Galactic to design and develop a clothing range for the training of its astronauts and space tourists, the f… [+1736 chars]
+62        Spooky season is here and what better way to prep for Halloween than with a full moon?\r\nOctober's full moon won't be on Halloween, but it will give you plenty of time to decorate and practice your be… [+3527 chars]
+63          So far, 2024 has been an amazing year for astrological phenomena. From the solar eclipse, supermoons, and now a temporary second moon orbiting the Earth, the sky's paintbrush never fails to bring awe… [+4088 chars]
+64        People around the country, including in Kentucky, were able to see the northern lights on Thursday evening with some viewers capturing images of them and posting them to social media.\r\nA social media… [+2018 chars]
+65          Starship made a successful fifth flight test yesterday on its quest to head to the moon and eventually to Mars. The worlds largest rocket, a 400-foot-tall behemoth, took off successfully at 8:25 a.m.… [+3034 chars]
+66          A once in a lifetime comet is expected to light up the night sky as it passes by Earth later this week. Comet Tsuchinshan-ATLAS will be bright enough to view by the naked eye for most of October. Her… [+1884 chars]
+67        SpaceX launched its enormous Starship rocket on Sunday on its boldest test flight yet, catching the returning booster back at the pad with mechanical arms.\r\nTowering almost 400 feet (121 meters), the… [+2290 chars]
+68          Lo que parecía hace unas semanas pequeños problemas de mantenimiento en la ISS, han pasado a otra categoría. A lo largo de los más de un cuarto de siglo que ya tienen muchos de los elementos de la es… [+3897 chars]
+69          Un poderoso cohete Falcon Heavy de SpaceX ha gastado hasta la última gota de combustible que tenía en su interior para lanzar Europa Clipper, una de las misiones más importantes de la NASA para la pr… [+3991 chars]
+70          Marte. El planeta rojo es el próximo gran destino de la humanidad. Actualmente la NASA planea lanzar una misión tripulada a este mundo a lo largo de la próxima década, aunque aún no ha concretado una… [+3680 chars]
+71          La misión Hera de la Agencia Espacial Europea (ESA) vuela ya hacia Dimorphos, el primer asteroide desviado por el ser humano en una misión de defensa planetaria. Para lanzarla, SpaceX tuvo que volar … [+4756 chars]
+72          El ciclo 25 del Sol se acerca a su punto de mayor actividad. Como estaba previsto, el máximo solar ha llegado con múltiples, potentes llamaradas y tormentas geomagnéticas. El pronóstico: auroras dond… [+1540 chars]
+73          Los lanzamientos del cohete Falcon 9 vuelven a estar paralizados, en esta ocasión por un fallo de la segunda etapa al desorbitar. No deberían tardar en reanudarse: SpaceX tiene dos misiones important… [+3798 chars]
+74          United Launch Alliance (ULA) lanzará este viernes la segunda y última misión de certificación de su nuevo cohete Vulcan Centaur. Con precios similares a los que ofrece SpaceX a la NASA y el Pentágono… [+4310 chars]
+75          Kirk, Leslie y Milton son los nombres de los tres huracanes activos simultáneamente en aguas del océano Atlántico. El evento ha llamado la atención porque es la primera vez que la coincidencia se da … [+3725 chars]
+76          La Antártida cada vez tiene más vegetación. Y es algo nefasto. La Antártida se ha convertido en uno de los termómetros que los científicos utilizan para medir los efectos del cambio climático. Por ej… [+5163 chars]
+77          No es ningún secreto hacia dónde están mirando las grandes fortunas del planeta. De un tiempo a esta parte parece que se multiplicanlos proyectos de eso que se ha pasado a llamar turismo espacial y q… [+4755 chars]
+78          La semana pasada contamos cómo fue el paso del huracán Milton por Estados Unidos y algunas de sus peculiaridades. Por ejemplo, fue el segundo huracán más rápido de la historia en pasar de categoría 1… [+3585 chars]
+79          Este verano, un grupo de turistas que paseaba por el Parque Nacional de Yellowstone se llevó un buen susto cuando una explosión hidrotermal lanzó por los aires vapor de agua, rocas y suciedad. Fue so… [+3120 chars]
+80          Hace unos minutos se produjo una llamarada solar de clase X9.0 en una región muy activa del Sol. Es la fulguración más potente del actual ciclo solar, que está a punto de alcanzar su máximo. Y la más… [+2625 chars]
+81          Los unicornios existen. Con la fiebre de las puntocom, empezaron a surgir decenas de startups que empezaron a operar en un terreno completamente nuevo y desconocido. Una idea tenía un tremendo valor,… [+4074 chars]
+82          Barnard es el nombre que recibe una estrella conocida por los astrónomos. Hablamos de una enana roja que tiene una particularidad: es la más cercana al Sistema Solar (la estrella más cercana que se m… [+4540 chars]
+83          El pasado mes de julio descubrimos que una roca en el fondo del mar corregía el origen de la vida compleja en 1.500 millones de años antes. Habían dado con unas condiciones ambientales para la vida a… [+4483 chars]
+84          Hasta hace poco, cuando hablábamos de rayos gamma lo hacíamos para referirnos a reacciones nucleares y fenómenos más extremos del universo, como explosiones de supernovas o agujeros negros. Sin embar… [+4378 chars]
+85          ¿Cuánto cuesta fabricar el cohete más grande del mundo? Gracias a una demanda judicial, tenemos la respuesta. La organización ambientalista Save RGV está librando una batalla legal contra SpaceX por … [+4577 chars]
+86          Los instrumentos del Telescopio Espacial James Webb (JWST) son capaces de alcanzar algunos de los lugares más recónditos del universo en el espacio y el el tiempo. Sin embargo, de vez en cuando apunt… [+4373 chars]
+87          De todos los temas que obsesionan a Elon Musk, hay dos en los que no ha cambiado de opinión desde que dirige SpaceX y Tesla : 1) la humanidad tiene que colonizar Marte para convertirse en una especie… [+4499 chars]
+88          Nuestra obsesión con Marte podría en un futuro ayudarnos a encontrar respuestas a dos de los grandes enigmas del universo: el misterio de la materia oscura y la existencia o no de los agujeros negros… [+4354 chars]
+89        Dos semanas después de que John R. Brinkley llegara a Milford (Kansas), un granjero llegó a la consulta y le pidió que le ayudara con sus problemas de virilidad.\r\nBrinkley le explicó que no había tra… [+4893 chars]
+90          Todavía no habíamos pisado la Luna cuando el ingeniero estadounidense Peter Glaser propuso lanzar paneles solares al espacio. La idea era brillante: los paneles fotovoltaicos capturarían la energía d… [+5476 chars]
+91  &lt;ul&gt;&lt;li&gt;Whats next for Russia? \r\n&lt;/li&gt;&lt;li&gt;What comes next after Texas school shooting?\r\n&lt;/li&gt;&lt;li&gt;What's next for abortion rights in America?\r\n&lt;/li&gt;&lt;li&gt;The new battle for voting rights\r\n&lt;/li&gt;&lt;li&gt;How w… [+2284 chars]
+92         Just after noon on Monday, a SpaceX rocket stood on the same launchpad that once sent men to the moon. Hurricane Milton had recently ripped across Florida, whipping up winds of a hundred miles per ho… [+11657 chars]
+93          NASA has a communications problem: The radio frequencies used by spacecraft for communications are getting too busy. As more missions are sent into outer space, and as these missions carry increasing… [+2992 chars]
+94        How Do Astronauts Drink Coffee in Space?\r\nLike many folks, astronauts enjoy a cup of joe from time to time, but the lack of gravity means that preparing and drinking it is a little different to how y… [+1715 chars]
+95        What's Up: October 2024 Skywatching Tips from NASA\r\nNASA is back again with its monthly update of celestial delights to enjoy over the coming weeks. The space agency shared its tips in a video (above… [+3197 chars]
+96        NASA astronaut Matthew Dominick is preparing to return to Earth after spending seven months living and working aboard the International Space Station (ISS).\r\nAfter arriving at the orbital outpost, Do… [+6667 chars]
+97        SpaceX and NASA have called off Thursday’s planned launch of the Europa Clipper mission due to Hurricane Milton, which is heading east toward Florida, home of the Kennedy Space Center.\r\n“Once the sto… [+1916 chars]
+98        NASA and SpaceX are preparing to bring home three American astronauts and a Russian cosmonaut from the International Space Station (ISS).\r\nOn Sunday, NASA’s Matthew Dominick, Michael Barratt, and Jea… [+1659 chars]
+99          NASA’s Europa Clipper mission, set to visit the icy moon of Jupiter, was set to launch from the Kennedy Space Center in Florida this week but had its launch delayed because of Hurricane Milton. Now, … [+2091 chars]
+100         NASA and SpaceX’s four Crew-8 astronauts will be staying in their temporary home on the International Space Station (ISS) for a little while longer, as their departure has been delayed due to incleme… [+2050 chars]</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Now write a quick function that allows the user to easily query this API. The inputs to the function should be the title/subject to search for (string), a time period to search from (string - you’ll search from that time until the present), and an API key.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>load_data_news <span class="ot">&lt;-</span> <span class="cf">function</span>(subject, key, date) {</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  base_URL <span class="ot">&lt;-</span> <span class="st">"https://newsapi.org/v2/"</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  URL0 <span class="ot">&lt;-</span> <span class="fu">paste</span>(base_URL, <span class="st">"everything?q="</span>, <span class="fu">str_replace_all</span>(subject,<span class="st">" "</span>,<span class="st">"%20"</span>), <span class="at">sep =</span> <span class="st">""</span>) <span class="co">#Added code to substitute %20 for spaces in "subject" strings so that they will be recognized</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  URL <span class="ot">&lt;-</span> <span class="fu">paste</span>(URL0, <span class="fu">paste</span>(<span class="st">"from="</span>,date,<span class="at">sep=</span><span class="st">""</span>), <span class="st">"sortBy=popularity"</span>, <span class="fu">paste</span>(<span class="st">"apiKey="</span>,key,<span class="at">sep=</span><span class="st">""</span>),<span class="at">sep=</span><span class="st">"&amp;"</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  id_info <span class="ot">&lt;-</span> httr<span class="sc">::</span><span class="fu">GET</span>(URL)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  parsed <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(id_info<span class="sc">$</span>content))</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  final <span class="ot">&lt;-</span> parsed <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="st">"articles"</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(final)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Use your function twice to grab some data (save each as an object)!</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>NASA_News <span class="ot">&lt;-</span> <span class="fu">load_data_news</span>(<span class="st">"NASA"</span>,<span class="st">"b237d7ce5b9d44679649057226cdb326"</span>,<span class="st">"2024-09-24"</span>)</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>EIA_News <span class="ot">&lt;-</span> <span class="fu">load_data_news</span>(<span class="st">"EIA"</span>,<span class="st">"b237d7ce5b9d44679649057226cdb326"</span>,<span class="st">"2024-09-24"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>With one of your objects, summarize the name of the source for each article. That is, find a one-way contingency table for this information.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(NASA_News<span class="sc">$</span>source<span class="sc">$</span>name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+             [Removed]   Akron Beacon Journal           Ars Technica 
+                     2                      1                      2 
+              BBC News       Business Insider                   CNET 
+                     4                      8                      7 
+       Courier Journal   Digital Camera World            Gizmodo.com 
+                     1                      1                     34 
+              Hackaday           Hipertextual KOLR - OzarksFirst.com 
+                     7                      5                      1 
+                   NPR            Robb Report           Slashdot.org 
+                     5                      1                      3 
+            Tennessean    The Weather Network                   Time 
+                     1                      1                      4 
+                 Wired             Xataka.com    Yahoo Entertainment 
+                     4                      3                      5 </code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>For each of your returned data objects, turn the publishedAt column into a date column using the lubridate package (see the PARSE DATE-TIMES section of the cheat sheet!). Then sort the two data frames, each by their new parsed date published column. Finally, create a new variable called pub_diff that is the difference in time between the articles’ published dates (use lag() with mutate()). Save the modifications as new data frames.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>NASA_News<span class="sc">$</span>publishedAt <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(NASA_News<span class="sc">$</span>publishedAt)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>NASA_News_update <span class="ot">&lt;-</span> NASA_News <span class="sc">|&gt;</span> <span class="fu">arrange</span>(publishedAt) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">pub_diff=</span><span class="fu">as.numeric</span>(publishedAt)<span class="sc">-</span><span class="fu">lag</span>(<span class="fu">as.numeric</span>(publishedAt))) <span class="co">#can subtract without using as.numeric, but will give the time in seconds anyway</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>NASA_News_update<span class="sc">$</span>pub_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1]    NA    19    20  4025  1041 11144  3098 49050 24635  2071 14801 10966
+ [13] 60057  8486 10435 62960 15623 58588  1378    17 12961  6822  9626  5192
+ [25] 21422 30391 31049  2765 12983 39575  3839  5204 12866 29011 51197  9197
+ [37]  6583 66642  5641   626  6028 12612  9373 11588 22741 16854  3634  1198
+ [49] 23806 52034 17762  7298 74266 89997 25204 38542  9085  4937  9561  9284
+ [61]  5095  3600 53459  5060  5378  6302  3620 54918 16862  1096  9705 17302
+ [73] 44990  7253 16464  1506  5432  8355 55566  4118  2119 72005 12889 13873
+ [85]  9220 54052  6980  7981 11069 29988 32723  8407 12602 19801 39623  3615
+ [97]  1180 25502  8112  6414</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>NASA_News_update<span class="sc">$</span>publishedAt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "2024-09-24 12:00:03 UTC" "2024-09-24 12:00:22 UTC"
+  [3] "2024-09-24 12:00:42 UTC" "2024-09-24 13:07:47 UTC"
+  [5] "2024-09-24 13:25:08 UTC" "2024-09-24 16:30:52 UTC"
+  [7] "2024-09-24 17:22:30 UTC" "2024-09-25 07:00:00 UTC"
+  [9] "2024-09-25 13:50:35 UTC" "2024-09-25 14:25:06 UTC"
+ [11] "2024-09-25 18:31:47 UTC" "2024-09-25 21:34:33 UTC"
+ [13] "2024-09-26 14:15:30 UTC" "2024-09-26 16:36:56 UTC"
+ [15] "2024-09-26 19:30:51 UTC" "2024-09-27 13:00:11 UTC"
+ [17] "2024-09-27 17:20:34 UTC" "2024-09-28 09:37:02 UTC"
+ [19] "2024-09-28 10:00:00 UTC" "2024-09-28 10:00:17 UTC"
+ [21] "2024-09-28 13:36:18 UTC" "2024-09-28 15:30:00 UTC"
+ [23] "2024-09-28 18:10:26 UTC" "2024-09-28 19:36:58 UTC"
+ [25] "2024-09-29 01:34:00 UTC" "2024-09-29 10:00:31 UTC"
+ [27] "2024-09-29 18:38:00 UTC" "2024-09-29 19:24:05 UTC"
+ [29] "2024-09-29 23:00:28 UTC" "2024-09-30 10:00:03 UTC"
+ [31] "2024-09-30 11:04:02 UTC" "2024-09-30 12:30:46 UTC"
+ [33] "2024-09-30 16:05:12 UTC" "2024-10-01 00:08:43 UTC"
+ [35] "2024-10-01 14:22:00 UTC" "2024-10-01 16:55:17 UTC"
+ [37] "2024-10-01 18:45:00 UTC" "2024-10-02 13:15:42 UTC"
+ [39] "2024-10-02 14:49:43 UTC" "2024-10-02 15:00:09 UTC"
+ [41] "2024-10-02 16:40:37 UTC" "2024-10-02 20:10:49 UTC"
+ [43] "2024-10-02 22:47:02 UTC" "2024-10-03 02:00:10 UTC"
+ [45] "2024-10-03 08:19:11 UTC" "2024-10-03 13:00:05 UTC"
+ [47] "2024-10-03 14:00:39 UTC" "2024-10-03 14:20:37 UTC"
+ [49] "2024-10-03 20:57:23 UTC" "2024-10-04 11:24:37 UTC"
+ [51] "2024-10-04 16:20:39 UTC" "2024-10-04 18:22:17 UTC"
+ [53] "2024-10-05 15:00:03 UTC" "2024-10-06 16:00:00 UTC"
+ [55] "2024-10-06 23:00:04 UTC" "2024-10-07 09:42:26 UTC"
+ [57] "2024-10-07 12:13:51 UTC" "2024-10-07 13:36:08 UTC"
+ [59] "2024-10-07 16:15:29 UTC" "2024-10-07 18:50:13 UTC"
+ [61] "2024-10-07 20:15:08 UTC" "2024-10-07 21:15:08 UTC"
+ [63] "2024-10-08 12:06:07 UTC" "2024-10-08 13:30:27 UTC"
+ [65] "2024-10-08 15:00:05 UTC" "2024-10-08 16:45:07 UTC"
+ [67] "2024-10-08 17:45:27 UTC" "2024-10-09 09:00:45 UTC"
+ [69] "2024-10-09 13:41:47 UTC" "2024-10-09 14:00:03 UTC"
+ [71] "2024-10-09 16:41:48 UTC" "2024-10-09 21:30:10 UTC"
+ [73] "2024-10-10 10:00:00 UTC" "2024-10-10 12:00:53 UTC"
+ [75] "2024-10-10 16:35:17 UTC" "2024-10-10 17:00:23 UTC"
+ [77] "2024-10-10 18:30:55 UTC" "2024-10-10 20:50:10 UTC"
+ [79] "2024-10-11 12:16:16 UTC" "2024-10-11 13:24:54 UTC"
+ [81] "2024-10-11 14:00:13 UTC" "2024-10-12 10:00:18 UTC"
+ [83] "2024-10-12 13:35:07 UTC" "2024-10-12 17:26:20 UTC"
+ [85] "2024-10-12 20:00:00 UTC" "2024-10-13 11:00:52 UTC"
+ [87] "2024-10-13 12:57:12 UTC" "2024-10-13 15:10:13 UTC"
+ [89] "2024-10-13 18:14:42 UTC" "2024-10-14 02:34:30 UTC"
+ [91] "2024-10-14 11:39:53 UTC" "2024-10-14 14:00:00 UTC"
+ [93] "2024-10-14 17:30:02 UTC" "2024-10-14 23:00:03 UTC"
+ [95] "2024-10-15 10:00:26 UTC" "2024-10-15 11:00:41 UTC"
+ [97] "2024-10-15 11:20:21 UTC" "2024-10-15 18:25:23 UTC"
+ [99] "2024-10-15 20:40:35 UTC" "2024-10-15 22:27:29 UTC"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>EIA_News<span class="sc">$</span>publishedAt <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(EIA_News<span class="sc">$</span>publishedAt)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>EIA_News_update <span class="ot">&lt;-</span> EIA_News <span class="sc">|&gt;</span> <span class="fu">arrange</span>(publishedAt) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">pub_diff=</span><span class="fu">as.numeric</span>(publishedAt)<span class="sc">-</span><span class="fu">lag</span>(<span class="fu">as.numeric</span>(publishedAt)))</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>EIA_News_update<span class="sc">$</span>pub_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1]     NA     42   8184   6972  14051   6793  43850  19762   8584     12
+ [11]   7434  24496  19822      0    840   5760   8120   2020   4079   1841
+ [21]   4005   8871   2026   1832  39662 185313  50331   5367    216  34017
+ [31]  25558     30    215   4077  17676   2844  35520   1957   8663  25268
+ [41]  48360  23190  13714    623  22705  22440   5568  17951   9240  11581
+ [51] 102464 118790  96723    443   4614  13499  65587  14351   4866   1483
+ [61]   3019   4506  10055  11249   2419   3858   1289  12526   3282   3626
+ [71]    544      6  15621   3424    177    690   1653    236   8220  13108
+ [81]    956  30816   1948   8559  20044   7404  72561  35464  38789  14880
+ [91]  11310      8     15      7 165331  11803   4453    364  69889  25180</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>EIA_News_update<span class="sc">$</span>publishedAt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "2024-09-24 10:08:18 UTC" "2024-09-24 10:09:00 UTC"
+  [3] "2024-09-24 12:25:24 UTC" "2024-09-24 14:21:36 UTC"
+  [5] "2024-09-24 18:15:47 UTC" "2024-09-24 20:09:00 UTC"
+  [7] "2024-09-25 08:19:50 UTC" "2024-09-25 13:49:12 UTC"
+  [9] "2024-09-25 16:12:16 UTC" "2024-09-25 16:12:28 UTC"
+ [11] "2024-09-25 18:16:22 UTC" "2024-09-26 01:04:38 UTC"
+ [13] "2024-09-26 06:35:00 UTC" "2024-09-26 06:35:00 UTC"
+ [15] "2024-09-26 06:49:00 UTC" "2024-09-26 08:25:00 UTC"
+ [17] "2024-09-26 10:40:20 UTC" "2024-09-26 11:14:00 UTC"
+ [19] "2024-09-26 12:21:59 UTC" "2024-09-26 12:52:40 UTC"
+ [21] "2024-09-26 13:59:25 UTC" "2024-09-26 16:27:16 UTC"
+ [23] "2024-09-26 17:01:02 UTC" "2024-09-26 17:31:34 UTC"
+ [25] "2024-09-27 04:32:36 UTC" "2024-09-29 08:01:09 UTC"
+ [27] "2024-09-29 22:00:00 UTC" "2024-09-29 23:29:27 UTC"
+ [29] "2024-09-29 23:33:03 UTC" "2024-09-30 09:00:00 UTC"
+ [31] "2024-09-30 16:05:58 UTC" "2024-09-30 16:06:28 UTC"
+ [33] "2024-09-30 16:10:03 UTC" "2024-09-30 17:18:00 UTC"
+ [35] "2024-09-30 22:12:36 UTC" "2024-09-30 23:00:00 UTC"
+ [37] "2024-10-01 08:52:00 UTC" "2024-10-01 09:24:37 UTC"
+ [39] "2024-10-01 11:49:00 UTC" "2024-10-01 18:50:08 UTC"
+ [41] "2024-10-02 08:16:08 UTC" "2024-10-02 14:42:38 UTC"
+ [43] "2024-10-02 18:31:12 UTC" "2024-10-02 18:41:35 UTC"
+ [45] "2024-10-03 01:00:00 UTC" "2024-10-03 07:14:00 UTC"
+ [47] "2024-10-03 08:46:48 UTC" "2024-10-03 13:45:59 UTC"
+ [49] "2024-10-03 16:19:59 UTC" "2024-10-03 19:33:00 UTC"
+ [51] "2024-10-05 00:00:44 UTC" "2024-10-06 09:00:34 UTC"
+ [53] "2024-10-07 11:52:37 UTC" "2024-10-07 12:00:00 UTC"
+ [55] "2024-10-07 13:16:54 UTC" "2024-10-07 17:01:53 UTC"
+ [57] "2024-10-08 11:15:00 UTC" "2024-10-08 15:14:11 UTC"
+ [59] "2024-10-08 16:35:17 UTC" "2024-10-08 17:00:00 UTC"
+ [61] "2024-10-08 17:50:19 UTC" "2024-10-08 19:05:25 UTC"
+ [63] "2024-10-08 21:53:00 UTC" "2024-10-09 01:00:29 UTC"
+ [65] "2024-10-09 01:40:48 UTC" "2024-10-09 02:45:06 UTC"
+ [67] "2024-10-09 03:06:35 UTC" "2024-10-09 06:35:21 UTC"
+ [69] "2024-10-09 07:30:03 UTC" "2024-10-09 08:30:29 UTC"
+ [71] "2024-10-09 08:39:33 UTC" "2024-10-09 08:39:39 UTC"
+ [73] "2024-10-09 13:00:00 UTC" "2024-10-09 13:57:04 UTC"
+ [75] "2024-10-09 14:00:01 UTC" "2024-10-09 14:11:31 UTC"
+ [77] "2024-10-09 14:39:04 UTC" "2024-10-09 14:43:00 UTC"
+ [79] "2024-10-09 17:00:00 UTC" "2024-10-09 20:38:28 UTC"
+ [81] "2024-10-09 20:54:24 UTC" "2024-10-10 05:28:00 UTC"
+ [83] "2024-10-10 06:00:28 UTC" "2024-10-10 08:23:07 UTC"
+ [85] "2024-10-10 13:57:11 UTC" "2024-10-10 16:00:35 UTC"
+ [87] "2024-10-11 12:09:56 UTC" "2024-10-11 22:01:00 UTC"
+ [89] "2024-10-12 08:47:29 UTC" "2024-10-12 12:55:29 UTC"
+ [91] "2024-10-12 16:03:59 UTC" "2024-10-12 16:04:07 UTC"
+ [93] "2024-10-12 16:04:22 UTC" "2024-10-12 16:04:29 UTC"
+ [95] "2024-10-14 14:00:00 UTC" "2024-10-14 17:16:43 UTC"
+ [97] "2024-10-14 18:30:56 UTC" "2024-10-14 18:37:00 UTC"
+ [99] "2024-10-15 14:01:49 UTC" "2024-10-15 21:01:29 UTC"</code></pre>
+</div>
+</div>
+<ol start="6" type="1">
+<li>With each of your resulting two data objects (each a data frame, which is a special case of a list) do the following actions:</li>
+</ol>
+<ul>
+<li>Choose one of your data frames.</li>
+<li>Subset the data frame to only return the date version of publishedAt and the pub_diff variables.</li>
+<li>Use one call to the map() function to return the mean, standard deviation, and median of these columns. You should use a custom anonymous function using ‘shorthand’ notation ((x) …). Note that the pub_diff variable includes an NA so you’ll need to set na.rm = TRUE in the calls to mean(), sd(), and median().</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mean(x,na.rm=TRUE) sd(x,na.rm=TRUE) median(x,na.rm=TRUE)</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> EIA_News_update <span class="sc">|&gt;</span> <span class="fu">select</span>(publishedAt,pub_diff)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(df, \(x) <span class="fu">list</span>(<span class="fu">paste</span>(<span class="st">"mean ="</span>, <span class="fu">as.numeric</span>(<span class="fu">mean</span>(x,<span class="at">na.rm=</span><span class="cn">TRUE</span>)),<span class="st">"seconds"</span>, <span class="at">sep=</span><span class="st">" "</span>), <span class="fu">paste</span>(<span class="st">"stdev ="</span>,<span class="fu">sd</span>(x,<span class="at">na.rm=</span><span class="cn">TRUE</span>),<span class="st">"seconds"</span>, <span class="at">sep=</span><span class="st">" "</span>), <span class="fu">paste</span>(<span class="st">"median ="</span>,<span class="fu">as.numeric</span>(<span class="fu">median</span>(x,<span class="at">na.rm=</span><span class="cn">TRUE</span>)),<span class="st">"seconds"</span>, <span class="at">sep=</span><span class="st">" "</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$publishedAt
+$publishedAt[[1]]
+[1] "mean = 1728045082.89 seconds"
+
+$publishedAt[[2]]
+[1] "stdev = 554292.441324608 seconds"
+
+$publishedAt[[3]]
+[1] "median = 1728035212 seconds"
+
+
+$pub_diff
+$pub_diff[[1]]
+[1] "mean = 18723.1414141414 seconds"
+
+$pub_diff[[2]]
+[1] "stdev = 31801.2548783368 seconds"
+
+$pub_diff[[3]]
+[1] "median = 8120 seconds"</code></pre>
+</div>
+</div>
+<p>I decided to do everything in seconds since all of the pub_diff values were in seconds.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

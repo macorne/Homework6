@@ -1,0 +1,230 @@
+---
+title: "Homework 6"
+author: "Matthew Corne"
+date: "10-16-2024"
+format: html
+editor: visual
+---
+
+## Task 1: Conceptual Questions
+
+1. What is the purpose of the lapply() function? What is the equivalent purrr function?
+
+> `lapply()` (list apply) returns a list of values obtained by applying a function to margins of an array or matrix.  The equivalent `purrr` function is `map()`.
+
+2. Suppose we have a list called my_list. Each element of the list is a numeric data frame (all columns are numeric). We want use lapply() to run the code cor(numeric_matrix, method = "kendall") on each element of the list. Write code to do this below! (I’m really trying to ask you how you specify method = "kendall" when calling lapply().)
+
+> lapply(my_list,cor(my_list,\(x) cor(x,method="kendall")))
+
+3. What are two advantages of using purrr functions instead of the BaseR apply family?
+
+> More consistency - the `purrr` functions are used for clarity compared with `apply()` - and some helper functions
+
+4. What is a side-effect function?
+
+> A side-effect function changes variables in the environment and does not return the modified argument (data frame).
+
+5. Why can you name a variable sd in a function and not cause any issues with the sd function?
+
+> The inside of a function creates a local function environment that does not extend beyond the action of the function.  That is, the function opens its environment, executes, then closes its environment.
+
+## Task 2:  Writing R Functions
+
+1.  Write a basic function (call it getRMSE()) that takes in a vector of responses and a vector of predictions and outputs the RMSE.  Then, add additional arguments `...` to allow for handling NA values that may occur in the vector of responses.
+
+```{r}
+library(tidyverse)
+getRMSE <- function(vres,vprd,...){
+  rmse <- sqrt(mean(sum((vres-vprd)^2,...))) #Handle the NAs inside of sum, not mean; otherwise, will get NA
+  return(rmse)
+}
+
+```
+
+2.  Run the following code to create some response values and predictions.
+
+```{r}
+set.seed(10)
+n <- 100
+x <- runif(n)
+resp <- 3 + 10 * x + rnorm(n)
+pred <- predict(lm(resp ~ x), data.frame(x))
+
+resp[1] <- NA_real_
+resp[2] <- NA_real_
+
+getRMSE(resp,pred,na.rm=TRUE)
+
+```
+
+3.  Write a function called getMAE() that follows the specifications of the getRMSE() function.
+
+```{r}
+getMAE <- function(vres,vprd,...){
+#  vres[is.na(vres)] <- 0
+  mae <- (1/length(vres))*sum(abs(vres-vprd),...) #Again, pass the additional arguments to sum; abs only takes 1 argument
+  return(mae)
+}
+
+```
+
+4.  Run the following code to create some response values and predictions.
+
+```{r}
+set.seed(10)
+n <- 100
+x <- runif(n)
+resp <- 3 + 10 * x + rnorm(n)
+pred <- predict(lm(resp ~ x), data.frame(x))
+
+# Test your MAE function using this data.
+getMAE(resp,pred)
+
+# Repeat after replacing two of the response values with missing values (NA_real_). Test your MAE function with and without specifying the behavior to deal with missing values
+
+resp[1] <- NA_real_
+resp[2] <- NA_real_
+
+getMAE(resp,pred)
+getMAE(resp,pred,na.rm=TRUE)
+
+```
+
+5.  Write a wrapper function containing getRMSE() and getMAE() as helper functions.
+
+```{r}
+#The function should check that two numeric (atomic) vectors have been passed (consider is.vector(), is.atomic(), and is.numeric()). If not, a message should print and the function should exit. The function should return both metrics by default and include names. The behavior should be able to be changed using a character string of metrics to find.
+
+getWRAP <- function(vres,vprd,getRMSE=TRUE,getMAE=TRUE,...) {
+    if (is.atomic(is.vector(is.numeric(vres)))==FALSE | is.atomic(is.vector(is.numeric(vprd)))==FALSE){
+      stop("Response and prediction must be numeric (atomic) vectors")
+    }
+    else {
+      lst <- list()
+      if (getRMSE){
+        rmse <- getRMSE(vres,vprd,...)
+        lst[[length(lst)+1]] <- paste("RMSE =", rmse, sep = " ")
+      }
+      if (getMAE) {
+        mae <- getMAE(vres,vprd,...)
+        lst[[length(lst)+1]] <- paste("MAE =", mae, sep = " ")
+        }
+    }
+  return(lst)
+}
+
+```
+
+```{r}
+set.seed(10)
+n <- 100
+x <- runif(n)
+resp <- 3 + 10 * x + rnorm(n)
+pred <- predict(lm(resp ~ x), data.frame(x))
+
+# Test your new function using this data. Call it once asking for each metric individually and once specifying both metrics
+
+getWRAP(resp,pred)
+getWRAP(resp,pred,getRMSE=FALSE)
+getWRAP(resp,pred,getMAE=FALSE)
+
+# Repeat with replacing two of the response values with missing values (NA_real_).
+
+resp[1] <- NA_real_
+resp[2] <- NA_real_
+
+getWRAP(resp,pred,na.rm=TRUE)
+getWRAP(resp,pred,getRMSE=FALSE,na.rm=TRUE)
+getWRAP(resp,pred,getMAE=FALSE,na.rm=TRUE)
+
+# Finally, test your function by passing it incorrect data (i.e. a data frame or something else instead of vectors)
+#getWRAP(list("hungry","Hungry","HIPPOS!"),list(1,"x",TRUE))
+
+```
+
+## Task 3:  Querying an API and a Tidy-Style Function
+
+1.  Use GET() from the httr package to return information about a topic that you are interested in that
+has been in the news lately (store the result as an R object). Note: We can only look 30 days into the
+past with a free account.
+
+```{r}
+API_KEY <- "b237d7ce5b9d44679649057226cdb326"
+URL <- paste("https://newsapi.org/v2/everything?q=NASA&from=2024-10-01&sortBy=popularity&apiKey=",API_KEY,sep="")
+id_info <- httr::GET(URL)
+str(id_info, max.level = 1)
+
+```
+2.  Parse what is returned and find your way to the data frame that has the actual article information in
+it (check content). Use the pluck() function from purrr to grab the articles element. Note the
+first column should be a list column!
+
+```{r}
+library(jsonlite)
+parsed <- fromJSON(rawToChar(id_info$content))
+parsed |> pluck("articles")
+
+```
+
+3.  Now write a quick function that allows the user to easily query this API. The inputs to the function
+should be the title/subject to search for (string), a time period to search from (string - you’ll search
+from that time until the present), and an API key.
+
+```{r}
+load_data_news <- function(subject, key, date) {
+  base_URL <- "https://newsapi.org/v2/"
+  URL0 <- paste(base_URL, "everything?q=", str_replace_all(subject," ","%20"), sep = "") #Added code to substitute %20 for spaces in "subject" strings so that they will be recognized
+  URL <- paste(URL0, paste("from=",date,sep=""), "sortBy=popularity", paste("apiKey=",key,sep=""),sep="&")
+  id_info <- httr::GET(URL)
+  parsed <- fromJSON(rawToChar(id_info$content))
+  final <- parsed |> pluck("articles")
+  return(final)
+}
+
+# Use your function twice to grab some data (save each as an object)!
+NASA_News <- load_data_news("NASA","b237d7ce5b9d44679649057226cdb326","2024-09-24")
+EIA_News <- load_data_news("EIA","b237d7ce5b9d44679649057226cdb326","2024-09-24")
+
+```
+
+4.  With one of your objects, summarize the name of the source for each article. That is, find a one-way
+contingency table for this information.
+
+```{r}
+table(NASA_News$source$name)
+```
+
+5.  For each of your returned data objects, turn the publishedAt column into a date column using the
+lubridate package (see the PARSE DATE-TIMES section of the cheat sheet!). Then sort the two data
+frames, each by their new parsed date published column. Finally, create a new variable called pub_diff
+that is the difference in time between the articles’ published dates (use lag() with mutate()). Save
+the modifications as new data frames.
+
+```{r}
+library(lubridate)
+NASA_News$publishedAt <- ymd_hms(NASA_News$publishedAt)
+NASA_News_update <- NASA_News |> arrange(publishedAt) |> mutate(pub_diff=as.numeric(publishedAt)-lag(as.numeric(publishedAt))) #can subtract without using as.numeric, but will give the time in seconds anyway
+NASA_News_update$pub_diff
+NASA_News_update$publishedAt
+
+EIA_News$publishedAt <- ymd_hms(EIA_News$publishedAt)
+EIA_News_update <- EIA_News |> arrange(publishedAt) |> mutate(pub_diff=as.numeric(publishedAt)-lag(as.numeric(publishedAt)))
+EIA_News_update$pub_diff
+EIA_News_update$publishedAt
+
+```
+
+6.  With each of your resulting two data objects (each a data frame, which is a special case of a list) do
+the following actions:
+
+* Choose one of your data frames. 
+* Subset the data frame to only return the date version of publishedAt and the pub_diff variables.
+* Use one call to the map() function to return the mean, standard deviation, and median of these columns. You should use a custom anonymous function using ‘shorthand’ notation (\(x) ...). Note that the pub_diff variable includes an NA so you’ll need to set na.rm = TRUE in the calls to mean(), sd(), and median().
+
+```{r}
+#mean(x,na.rm=TRUE) sd(x,na.rm=TRUE) median(x,na.rm=TRUE)
+df <- EIA_News_update |> select(publishedAt,pub_diff)
+map(df, \(x) list(paste("mean =", as.numeric(mean(x,na.rm=TRUE)),"seconds", sep=" "), paste("stdev =",sd(x,na.rm=TRUE),"seconds", sep=" "), paste("median =",as.numeric(median(x,na.rm=TRUE)),"seconds", sep=" ")))
+
+```
+I decided to do everything in seconds since all of the pub_diff values were in seconds.
