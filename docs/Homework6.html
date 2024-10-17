@@ -159,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Suppose we have a list called my_list. Each element of the list is a numeric data frame (all columns are numeric). We want use lapply() to run the code cor(numeric_matrix, method = “kendall”) on each element of the list. Write code to do this below! (I’m really trying to ask you how you specify method = “kendall” when calling lapply().)</li>
 </ol>
 <blockquote class="blockquote">
-<p>lapply(my_list,cor(my_list,(x) cor(x,method=“kendall”)))</p>
+<p>lapply(my_list,cor(my_list,\(x) cor(x,method=“kendall”)))</p>
 </blockquote>
 <ol start="3" type="1">
 <li>What are two advantages of using purrr functions instead of the BaseR apply family?</li>
@@ -353,13 +353,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>List of 10
  $ url        : chr "https://newsapi.org/v2/everything?q=NASA&amp;from=2024-10-01&amp;sortBy=popularity&amp;apiKey=b237d7ce5b9d44679649057226cdb326"
  $ status_code: int 200
- $ headers    :List of 12
+ $ headers    :List of 14
   ..- attr(*, "class")= chr [1:2] "insensitive" "list"
  $ all_headers:List of 1
  $ cookies    :'data.frame':    0 obs. of  7 variables:
  $ content    : raw [1:82365] 7b 22 73 74 ...
- $ date       : POSIXct[1:1], format: "2024-10-17 01:10:22"
- $ times      : Named num [1:6] 0 0.167 0.193 0.23 0.503 ...
+ $ date       : POSIXct[1:1], format: "2024-10-17 01:17:47"
+ $ times      : Named num [1:6] 0 0.00562 0.03529 0.06746 0.14749 ...
   ..- attr(*, "names")= chr [1:6] "redirect" "namelookup" "connect" "pretransfer" ...
  $ request    :List of 7
   ..- attr(*, "class")= chr "request"
